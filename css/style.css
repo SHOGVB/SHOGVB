@@ -1,608 +1,483 @@
-/* =========================================
-   GENERAL
-========================================= */
-
+/* ========================================= GENERAL ========================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-    background: #f5f5f5;
-    color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background: #f5f5f5;
+  color: #222;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-
-/* =========================================
-   HEADER
-========================================= */
-
+/* ========================================= HEADER ========================================= */
 .site-header {
-    background: #111;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  background: #111;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .nav-container {
-    min-height: 70px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
-/* =========================================
-   LOGO
-========================================= */
-
+/* ========================================= LOGO ========================================= */
 .logo {
-    color: white;
-    text-decoration: none;
-
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: 2px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-
-/* =========================================
-   NAVIGATION
-========================================= */
-
+/* ========================================= NAVIGATION ========================================= */
 .navigation {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .navigation a {
-    color: white;
-    text-decoration: none;
-
-    font-weight: bold;
-
-    padding: 10px 0;
-
-    transition: 0.3s;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 0;
+  transition: 0.3s;
 }
 
 .navigation a:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .navigation a.active {
-    border-bottom: 3px solid white;
+  border-bottom: 3px solid white;
 }
 
-
-/* =========================================
-   MOBILE MENU BUTTON
-========================================= */
-
+/* ========================================= MOBILE MENU BUTTON ========================================= */
 .menu-toggle {
-    display: none;
-
-    background: none;
-    border: none;
-
-    color: white;
-
-    font-size: 1.8rem;
-
-    cursor: pointer;
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
 }
 
-
-/* =========================================
-   HERO
-========================================= */
-
+/* ========================================= HERO ========================================= */
 .hero {
-    min-height: 650px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            rgba(0, 0, 0, 0.55),
-            rgba(0, 0, 0, 0.55)
-        ),
-        url("../images/hero.jpg");
-
-    background-size: cover;
-    background-position: center;
-
-    color: white;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient( rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55) ), url("../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
 }
 
 .hero-content {
-    max-width: 750px;
-    padding: 30px;
+  max-width: 750px;
+  padding: 30px;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
-
-/* =========================================
-   BUTTONS
-========================================= */
-
+/* ========================================= BUTTONS ========================================= */
 .button {
-    display: inline-block;
-
-    background: #111;
-    color: white;
-
-    border: 2px solid #111;
-
-    padding: 12px 24px;
-
-    text-decoration: none;
-
-    border-radius: 5px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.3s;
+  display: inline-block;
+  background: #111;
+  color: white;
+  border: 2px solid #111;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .button:hover {
-    background: white;
-    color: #111;
+  background: white;
+  color: #111;
 }
 
 .button-outline {
-    background: transparent;
-    border-color: white;
-    margin-left: 10px;
+  background: transparent;
+  border-color: white;
+  margin-left: 10px;
 }
 
 .button-outline:hover {
-    background: white;
-    color: #111;
+  background: white;
+  color: #111;
 }
 
-
-/* =========================================
-   FEATURES
-========================================= */
-
+/* ========================================= FEATURES ========================================= */
 .features {
-    padding: 70px 0;
+  padding: 70px 0;
 }
 
 .features h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
 }
 
 .feature-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
 }
 
 .feature-card {
-    background: white;
-
-    padding: 30px;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .feature-card h3 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .feature-card p {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .feature-card a {
-    color: #111;
-    font-weight: bold;
-    text-decoration: none;
+  color: #111;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-
-/* =========================================
-   PAGE HEADER
-========================================= */
-
+/* ========================================= PAGE HEADER ========================================= */
 .page-header {
-    background: #222;
-    color: white;
-
-    padding: 70px 0;
-
-    text-align: center;
+  background: #222;
+  color: white;
+  padding: 70px 0;
+  text-align: center;
 }
 
 .page-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
-
-/* =========================================
-   CONTENT
-========================================= */
-
+/* ========================================= CONTENT ========================================= */
 .content-section {
-    padding: 70px 0;
+  padding: 70px 0;
 }
 
-
-/* =========================================
-   SCHEDULE
-========================================= */
-
+/* ========================================= SCHEDULE ========================================= */
 .schedule-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .event-card {
-    background: white;
-
-    display: flex;
-
-    padding: 25px;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
+  background: white;
+  display: flex;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .event-date {
-    min-width: 100px;
-
-    text-align: center;
-
-    margin-right: 25px;
-
-    border-right: 2px solid #ddd;
-
-    padding-right: 25px;
+  min-width: 100px;
+  text-align: center;
+  margin-right: 25px;
+  border-right: 2px solid #ddd;
+  padding-right: 25px;
 }
 
 .event-date .month {
-    display: block;
-
-    font-weight: bold;
-
-    font-size: 1.2rem;
+  display: block;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .event-date .day {
-    display: block;
-
-    font-size: 2.5rem;
-
-    font-weight: bold;
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .event-info h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-
-/* =========================================
-   PHOTOS
-========================================= */
-
+/* ========================================= PHOTOS ========================================= */
 .photo-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .photo-card {
-    overflow: hidden;
-
-    border-radius: 8px;
-
-    background: white;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .photo-card img {
-    width: 100%;
-
-    height: 250px;
-
-    object-fit: cover;
-
-    display: block;
-
-    transition: 0.3s;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: 0.3s;
 }
 
 .photo-card:hover img {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-
-/* =========================================
-   SHOP
-========================================= */
-
+/* ========================================= SHOP ========================================= */
 .product-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
 .product-card {
-    background: white;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
 
-    border-radius: 8px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
+/* Wrapper to hold image and badge layer positioning */
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 .product-card img {
-    width: 100%;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
 
-    height: 250px;
+/* Visual changes for sold out product states */
+.product-card.sold-out .product-image-container img {
+  opacity: 0.5;
+  filter: grayscale(60%);
+}
 
-    object-fit: cover;
+/* Red Diagonal Banner Settings */
+.sold-out-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.sold-out-overlay span {
+  background-color: #d9534f;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 6px 0;
+  width: 150%;
+  text-align: center;
+  transform: rotate(-25deg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Strike-through for discounted merchandise pricing */
+.old-price {
+  text-decoration: line-through;
+  color: #888888;
+  font-weight: normal;
+  margin-right: 8px;
+}
+
+/* Styling for unusable checkout button instances */
+.button.disabled-btn {
+  background-color: #cccccc;
+  color: #777777;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.button.disabled-btn:hover {
+  background-color: #cccccc;
+  color: #777777;
 }
 
 .product-info {
-    padding: 25px;
+  padding: 25px;
 }
 
 .product-info h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .product-info p {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .product-info strong {
-    display: block;
-
-    font-size: 1.3rem;
-
-    margin-bottom: 20px;
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
 }
 
-
-/* =========================================
-   CONTACT
-========================================= */
-
+/* ========================================= CONTACT ========================================= */
 .contact-grid {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
 }
 
 .contact-info {
-    background: white;
-
-    padding: 35px;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
+  background: white;
+  padding: 35px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .contact-info h2 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .contact-info p {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .contact-form {
-    background: white;
-
-    padding: 35px;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
+  background: white;
+  padding: 35px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .contact-form label {
-    display: block;
-
-    margin-bottom: 5px;
-
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
-
-    padding: 12px;
-
-    margin-bottom: 20px;
-
-    border: 1px solid #ccc;
-
-    border-radius: 5px;
-
-    font-family: inherit;
-
-    font-size: 1rem;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 .contact-form textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
-
-/* =========================================
-   FOOTER
-========================================= */
-
+/* ========================================= FOOTER ========================================= */
 .site-footer {
-    background: #111;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 30px 0;
-
-    margin-top: 30px;
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 30px;
 }
 
-
-/* =========================================
-   MOBILE RESPONSIVE DESIGN
-========================================= */
-
+/* ========================================= MOBILE RESPONSIVE DESIGN ========================================= */
 @media (max-width: 768px) {
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .navigation {
-        display: none;
-
-        position: absolute;
-
-        top: 70px;
-        left: 0;
-
-        width: 100%;
-
-        background: #111;
-
-        flex-direction: column;
-
-        gap: 0;
-
-        padding: 10px 0;
-    }
-
-    .navigation.show {
-        display: flex;
-    }
-
-    .navigation a {
-        padding: 15px 5%;
-
-        border-bottom: 1px solid #333;
-    }
-
-    .navigation a.active {
-        border-bottom: 1px solid #333;
-    }
-
-
-    .hero {
-        min-height: 450px;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .photo-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .event-card {
-        flex-direction: column;
-    }
-
-    .event-date {
-        border-right: none;
-
-        border-bottom: 2px solid #ddd;
-
-        padding-right: 0;
-
-        padding-bottom: 15px;
-
-        margin-right: 0;
-
-        margin-bottom: 15px;
-    }
-
-    .button-outline {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
+  .menu-toggle {
+    display: block;
+  }
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #111;
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+  }
+  .navigation.show {
+    display: flex;
+  }
+  .navigation a {
+    padding: 15px 5%;
+    border-bottom: 1px solid #333;
+  }
+  .navigation a.active {
+    border-bottom: 1px solid #333;
+  }
+  .hero {
+    min-height: 450px;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .event-card {
+    flex-direction: column;
+  }
+  .event-date {
+    border-right: none;
+    border-bottom: 2px solid #ddd;
+    padding-right: 0;
+    padding-bottom: 15px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  .button-outline {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
+
