@@ -63,6 +63,13 @@
 
     </section>
 
+    <!-- MAINTENANCE NOTICE BANNER -->
+    <section class="container" style="margin-top: 20px; margin-bottom: 20px;">
+        <div style="background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 15px; border-radius: 4px; text-align: center; font-weight: bold;">
+            ⚠️ The Contact Us page is down at the moment. We are working to resolve the issue as quickly as possible. Please try again later.
+        </div>
+    </section>
+
 
     <section class="content-section">
 
@@ -107,6 +114,7 @@
                         name="name"
                         placeholder="Your Name"
                         required
+                        disabled
                     >
 
 
@@ -120,6 +128,7 @@
                         name="email"
                         placeholder="Your Email"
                         required
+                        disabled
                     >
 
 
@@ -133,14 +142,17 @@
                         rows="6"
                         placeholder="Your Message"
                         required
+                        disabled
                     ></textarea>
 
 
                     <button
                         type="submit"
                         class="button"
+                        disabled
+                        style="opacity: 0.5; cursor: not-allowed;"
                     >
-                        Send Message
+                        Send Message (Unavailable)
                     </button>
 
                 </form>
