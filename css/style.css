@@ -65,7 +65,7 @@ body {
 
 /* Add this new block directly below the .logo code */
 .logo img {
-  height: 45px;      /* Controls how tall your logo is in the navigation bar */
+  height: 30px;      /* Controls how tall your logo is in the navigation bar */
   width: auto;       /* Maintains your logo's original shape aspect ratio */
   display: block;    /* Removes unexpected whitespace under the image */
 }
