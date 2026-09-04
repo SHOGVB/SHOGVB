@@ -1,3 +1,15 @@
+/* ========================================= 
+   THEME VARIABLES
+========================================= */
+:root {
+  --bg-off-white: #fffdf6;  /* Main page background */
+  --bg-card: #ffffff;      /* Clean white for content boxes/cards */
+  --brand-charcoal: #1a1a1a;/* Main dark color (headers, footers, dark text) */
+  --brand-yellow: #ffd204;  /* Accent color (buttons, active states, borders) */
+  --text-dark: #1a1a1a;     /* Body text */
+  --text-muted: #666666;    /* Secondary text */
+}
+
 /* ========================================= GENERAL ========================================= */
 * {
   margin: 0;
@@ -12,8 +24,8 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
-  background: #f5f5f5;
-  color: #222;
+  background: var(--bg-off-white);
+  color: var(--text-dark);
 }
 
 .container {
@@ -24,7 +36,7 @@ body {
 
 /* ========================================= HEADER ========================================= */
 .site-header {
-  background: #111;
+  background: var(--brand-charcoal);
   color: white;
   position: sticky;
   top: 0;
@@ -62,11 +74,11 @@ body {
 }
 
 .navigation a:hover {
-  opacity: 0.7;
+  color: var(--brand-yellow);
 }
 
 .navigation a.active {
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid var(--brand-yellow);
 }
 
 /* ========================================= MOBILE MENU BUTTON ========================================= */
@@ -86,7 +98,10 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient( rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55) ), url("../images/hero.jpg");
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.55)
+  ), url("../images/hero.jpg");
   background-size: cover;
   background-position: center;
   color: white;
@@ -110,9 +125,9 @@ body {
 /* ========================================= BUTTONS ========================================= */
 .button {
   display: inline-block;
-  background: #111;
-  color: white;
-  border: 2px solid #111;
+  background: var(--brand-yellow);
+  color: var(--brand-charcoal);
+  border: 2px solid var(--brand-yellow);
   padding: 12px 24px;
   text-decoration: none;
   border-radius: 5px;
@@ -122,19 +137,21 @@ body {
 }
 
 .button:hover {
-  background: white;
-  color: #111;
+  background: var(--brand-charcoal);
+  color: white;
+  border-color: var(--brand-charcoal);
 }
 
 .button-outline {
   background: transparent;
   border-color: white;
+  color: white;
   margin-left: 10px;
 }
 
 .button-outline:hover {
   background: white;
-  color: #111;
+  color: var(--brand-charcoal);
 }
 
 /* ========================================= FEATURES ========================================= */
@@ -155,10 +172,10 @@ body {
 }
 
 .feature-card {
-  background: white;
+  background: var(--bg-card);
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .feature-card h3 {
@@ -167,20 +184,23 @@ body {
 
 .feature-card p {
   margin-bottom: 20px;
+  color: var(--text-muted);
 }
 
 .feature-card a {
-  color: #111;
+  color: var(--brand-charcoal);
   font-weight: bold;
   text-decoration: none;
+  border-bottom: 2px solid var(--brand-yellow);
 }
 
 /* ========================================= PAGE HEADER ========================================= */
 .page-header {
-  background: #222;
+  background: var(--brand-charcoal);
   color: white;
   padding: 70px 0;
   text-align: center;
+  border-bottom: 4px solid var(--brand-yellow);
 }
 
 .page-header h1 {
@@ -201,18 +221,18 @@ body {
 }
 
 .event-card {
-  background: white;
+  background: var(--bg-card);
   display: flex;
   padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .event-date {
   min-width: 100px;
   text-align: center;
   margin-right: 25px;
-  border-right: 2px solid #ddd;
+  border-right: 2px solid var(--brand-yellow);
   padding-right: 25px;
 }
 
@@ -220,12 +240,14 @@ body {
   display: block;
   font-weight: bold;
   font-size: 1.2rem;
+  color: var(--brand-charcoal);
 }
 
 .event-date .day {
   display: block;
   font-size: 2.5rem;
   font-weight: bold;
+  color: var(--brand-charcoal);
 }
 
 .event-info h2 {
@@ -242,8 +264,8 @@ body {
 .photo-card {
   overflow: hidden;
   border-radius: 8px;
-  background: white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background: var(--bg-card);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .photo-card img {
@@ -266,13 +288,12 @@ body {
 }
 
 .product-card {
-  background: white;
+  background: var(--bg-card);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Wrapper to hold image and badge layer positioning */
 .product-image-container {
   position: relative;
   overflow: hidden;
@@ -287,13 +308,11 @@ body {
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-/* Visual changes for sold out product states */
 .product-card.sold-out .product-image-container img {
-  opacity: 0.5;
-  filter: grayscale(60%);
+  opacity: 0.4;
+  filter: grayscale(100%);
 }
 
-/* Red Diagonal Banner Settings */
 .sold-out-overlay {
   position: absolute;
   top: 0;
@@ -307,8 +326,8 @@ body {
 }
 
 .sold-out-overlay span {
-  background-color: #d9534f;
-  color: #ffffff;
+  background-color: var(--brand-charcoal);
+  color: var(--brand-yellow);
   font-weight: bold;
   font-size: 1.1rem;
   letter-spacing: 2px;
@@ -316,31 +335,30 @@ body {
   width: 150%;
   text-align: center;
   transform: rotate(-25deg);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid var(--brand-yellow);
+  border-bottom: 1px solid var(--brand-yellow);
 }
 
-/* Strike-through for discounted merchandise pricing */
 .old-price {
   text-decoration: line-through;
-  color: #888888;
+  color: var(--text-muted);
   font-weight: normal;
   margin-right: 8px;
 }
 
-/* Styling for unusable checkout button instances */
 .button.disabled-btn {
-  background-color: #cccccc;
-  color: #777777;
-  border-color: #cccccc;
+  background-color: #dddddd;
+  color: #888888;
+  border-color: #dddddd;
   cursor: not-allowed;
 }
 
 .button.disabled-btn:hover {
-  background-color: #cccccc;
-  color: #777777;
+  background-color: #dddddd;
+  color: #888888;
+  border-color: #dddddd;
 }
 
 .product-info {
@@ -353,6 +371,7 @@ body {
 
 .product-info p {
   margin-bottom: 15px;
+  color: var(--text-muted);
 }
 
 .product-info strong {
@@ -369,10 +388,10 @@ body {
 }
 
 .contact-info {
-  background: white;
+  background: var(--bg-card);
   padding: 35px;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .contact-info h2 {
@@ -381,13 +400,14 @@ body {
 
 .contact-info p {
   margin-bottom: 20px;
+  color: var(--text-muted);
 }
 
 .contact-form {
-  background: white;
+  background: var(--bg-card);
   padding: 35px;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .contact-form label {
@@ -396,7 +416,7 @@ body {
   font-weight: bold;
 }
 
-.contact-form input,
+.contact-form input, 
 .contact-form textarea {
   width: 100%;
   padding: 12px;
@@ -407,17 +427,24 @@ body {
   font-size: 1rem;
 }
 
+.contact-form input:focus, 
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--brand-yellow);
+}
+
 .contact-form textarea {
   resize: vertical;
 }
 
 /* ========================================= FOOTER ========================================= */
 .site-footer {
-  background: #111;
+  background: var(--brand-charcoal);
   color: white;
   text-align: center;
   padding: 30px 0;
   margin-top: 30px;
+  border-top: 3px solid var(--brand-yellow);
 }
 
 /* ========================================= MOBILE RESPONSIVE DESIGN ========================================= */
@@ -425,59 +452,62 @@ body {
   .menu-toggle {
     display: block;
   }
+  
   .navigation {
     display: none;
     position: absolute;
     top: 70px;
     left: 0;
     width: 100%;
-    background: #111;
+    background: var(--brand-charcoal);
     flex-direction: column;
     gap: 0;
     padding: 10px 0;
   }
+  
   .navigation.show {
     display: flex;
   }
+  
   .navigation a {
     padding: 15px 5%;
     border-bottom: 1px solid #333;
   }
+  
+  .navigation a:hover {
+    color: var(--brand-yellow);
+  }
+  
   .navigation a.active {
     border-bottom: 1px solid #333;
+    color: var(--brand-yellow);
   }
+  
   .hero {
     min-height: 450px;
   }
+  
   .hero h1 {
     font-size: 2.5rem;
   }
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-  .photo-grid {
-    grid-template-columns: 1fr;
-  }
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
+  
+  .feature-grid, 
+  .photo-grid, 
+  .product-grid, 
   .contact-grid {
     grid-template-columns: 1fr;
   }
+  
   .event-card {
     flex-direction: column;
   }
+  
   .event-date {
     border-right: none;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--brand-yellow);
     padding-right: 0;
     padding-bottom: 15px;
     margin-right: 0;
     margin-bottom: 15px;
   }
-  .button-outline {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-}
-
+  
