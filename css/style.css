@@ -57,6 +57,18 @@ body {
   font-size: 1.8rem;
   font-weight: bold;
   letter-spacing: 2px;
+  
+  /* Adds a smooth flex layout to ensure the image centers nicely in the header */
+  display: flex;
+  align-items: center; 
+}
+
+/* Add this new block directly below the .logo code */
+.logo img {
+  height: 30px;      /* Controls how tall your logo is in the navigation bar */
+  width: auto;       /* Maintains your logo's original shape aspect ratio */
+  display: block;    /* Removes unexpected whitespace under the image */
+}
 
 
 /* ========================================= NAVIGATION ========================================= */
