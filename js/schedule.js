@@ -1,21 +1,53 @@
+/* =========================================
+   SHOGVB SCHEDULE
+========================================= */
+
 async function loadSchedule() {
 
-    const schedule = document.getElementById("schedule");
+    const schedule =
+        document.getElementById("schedule");
 
-    const today = new Date();
+    const today =
+        new Date();
 
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
+    const year =
+        today.getFullYear();
 
-    const todayString = `${year}-${month}-${day}`;
+    const month =
+        String(
+            today.getMonth() + 1
+        ).padStart(2, "0");
 
-    const { data: events, error } = await sb
-        .from("events")
-        .select("*")
-        .gte("event_date", todayString)
-        .order("event_date", { ascending: true })
-        .order("start_time", { ascending: true });
+    const day =
+        String(
+            today.getDate()
+        ).padStart(2, "0");
+
+    const todayString =
+        `${year}-${month}-${day}`;
+
+
+    const { data: events, error } =
+        await sb
+            .from("events")
+            .select("*")
+            .gte(
+                "event_date",
+                todayString
+            )
+            .order(
+                "event_date",
+                {
+                    ascending: true
+                }
+            )
+            .order(
+                "start_time",
+                {
+                    ascending: true
+                }
+            );
+
 
     if (error) {
 
@@ -23,11 +55,16 @@ async function loadSchedule() {
 
         schedule.innerHTML = `
             <div class="schedule-message">
-                <h2>Schedule unavailable</h2>
+
+                <h2>
+                    Schedule unavailable
+                </h2>
+
                 <p>
                     We couldn't load the schedule right now.
                     Please check back soon.
                 </p>
+
             </div>
         `;
 
@@ -40,7 +77,9 @@ async function loadSchedule() {
         schedule.innerHTML = `
             <div class="schedule-message">
 
-                <h2>No Upcoming Open Gyms</h2>
+                <h2>
+                    No Upcoming Open Gyms
+                </h2>
 
                 <p>
                     There are currently no upcoming
@@ -64,40 +103,126 @@ async function loadSchedule() {
     events.forEach(event => {
 
         const date =
-            new Date(event.event_date + "T00:00:00");
+            new Date(
+                event.event_date +
+                "T00:00:00"
+            );
+
 
         const month =
-            date.toLocaleString("en-US", {
-                month: "short"
-            }).toUpperCase();
+            date.toLocaleString(
+                "en-US",
+                {
+                    month: "short"
+                }
+            ).toUpperCase();
 
-        const day = date.getDate();
+
+        const day =
+            date.getDate();
+
 
         const weekday =
-            date.toLocaleString("en-US", {
-                weekday: "long"
-            });
+            date.toLocaleString(
+                "en-US",
+                {
+                    weekday: "long"
+                }
+            );
 
 
         const startTime =
-            formatTime(event.start_time);
+            formatTime(
+                event.start_time
+            );
+
 
         const endTime =
-            formatTime(event.end_time);
+            formatTime(
+                event.end_time
+            );
 
 
         const card =
             document.createElement("div");
 
-        card.className = "event-card";
+
+        card.className =
+            "event-card";
 
 
-        if (event.status === "Canceled") {
-            card.classList.add("event-canceled");
+        if (
+            event.status ===
+            "Canceled"
+        ) {
+
+            card.classList.add(
+                "event-canceled"
+            );
+
         }
 
-        if (event.status === "Full") {
-            card.classList.add("event-full");
+
+        if (
+            event.status ===
+            "Full"
+        ) {
+
+            card.classList.add(
+                "event-full"
+            );
+
+        }
+
+
+        /* =====================================
+           ADDRESS / DIRECTIONS
+        ===================================== */
+
+        let addressHTML = "";
+
+
+        if (event.address) {
+
+            const safeAddress =
+                escapeHTML(
+                    event.address
+                );
+
+
+            const mapsURL =
+                "https://www.google.com/maps/search/?api=1&query=" +
+                encodeURIComponent(
+                    event.address
+                );
+
+
+            addressHTML = `
+
+                <p>
+                    <strong>
+                        Address:
+                    </strong>
+
+                    ${safeAddress}
+                </p>
+
+
+                <p class="directions-row">
+
+                    <a
+                        href="${mapsURL}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="directions-link"
+                    >
+                        📍 Get Directions
+                    </a>
+
+                </p>
+
+            `;
+
         }
 
 
@@ -121,14 +246,21 @@ async function loadSchedule() {
                 <div class="event-title-row">
 
                     <h2>
-                        ${escapeHTML(event.title)}
+                        ${escapeHTML(
+                            event.title
+                        )}
                     </h2>
 
-                    <span class="
-                        status-badge
-                        status-${event.status.toLowerCase()}
-                    ">
-                        ${escapeHTML(event.status)}
+
+                    <span
+                        class="
+                            status-badge
+                            status-${event.status.toLowerCase()}
+                        "
+                    >
+                        ${escapeHTML(
+                            event.status
+                        )}
                     </span>
 
                 </div>
@@ -140,61 +272,99 @@ async function loadSchedule() {
 
 
                 <p>
-                    <strong>Time:</strong>
-                    ${startTime} – ${endTime}
+                    <strong>
+                        Time:
+                    </strong>
+
+                    ${startTime}
+                    –
+                    ${endTime}
                 </p>
 
 
                 <p>
-                    <strong>Location:</strong>
-                    ${escapeHTML(event.location)}
+                    <strong>
+                        Location:
+                    </strong>
+
+                    ${escapeHTML(
+                        event.location
+                    )}
                 </p>
+
+
+                ${addressHTML}
 
 
                 ${
                     event.cost !== null
+                    && event.cost !== undefined
+
                     ? `
-                    <p>
-                        <strong>Cost:</strong>
-                        $${Number(event.cost).toFixed(2)}
-                    </p>
+                        <p>
+                            <strong>
+                                Cost:
+                            </strong>
+
+                            $${Number(
+                                event.cost
+                            ).toFixed(2)}
+                        </p>
                     `
+
                     : ""
                 }
 
 
                 ${
                     event.player_limit
+
                     ? `
-                    <p>
-                        <strong>Player Limit:</strong>
-                        ${event.player_limit}
-                    </p>
+                        <p>
+                            <strong>
+                                Player Limit:
+                            </strong>
+
+                            ${event.player_limit}
+                        </p>
                     `
+
                     : ""
                 }
 
 
                 ${
                     event.notes
+
                     ? `
-                    <p class="event-notes">
-                        ${escapeHTML(event.notes)}
-                    </p>
+                        <p class="event-notes">
+                            ${escapeHTML(
+                                event.notes
+                            )}
+                        </p>
                     `
+
                     : ""
                 }
 
             </div>
+
         `;
 
 
-        schedule.appendChild(card);
+        schedule.appendChild(
+            card
+        );
 
     });
 
 }
 
+
+
+/* =========================================
+   FORMAT TIME
+========================================= */
 
 function formatTime(time) {
 
@@ -202,14 +372,20 @@ function formatTime(time) {
         return "";
     }
 
-    const [hours, minutes] = time.split(":");
 
-    const date = new Date();
+    const [hours, minutes] =
+        time.split(":");
+
+
+    const date =
+        new Date();
+
 
     date.setHours(
         Number(hours),
         Number(minutes)
     );
+
 
     return date.toLocaleTimeString(
         "en-US",
@@ -218,45 +394,80 @@ function formatTime(time) {
             minute: "2-digit"
         }
     );
+
 }
 
 
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
 function escapeHTML(value) {
 
-    if (value === null || value === undefined) {
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
         return "";
+
     }
 
+
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     div.textContent =
         String(value);
 
+
     return div.innerHTML;
+
 }
 
 
+
+/* =========================================
+   LOAD PUBLIC SCHEDULE
+========================================= */
+
 loadSchedule();
+
+
+
 /* =========================================
    MONTHLY CALENDAR
 ========================================= */
 
-let calendarDate = new Date();
+let calendarDate =
+    new Date();
 
-let calendarEvents = [];
+
+let calendarEvents =
+    [];
 
 
-/* Load calendar events */
+
+/* =========================================
+   LOAD CALENDAR EVENTS
+========================================= */
 
 async function loadCalendarEvents() {
 
-    const { data, error } = await sb
-        .from("events")
-        .select("*")
-        .order("event_date", {
-            ascending: true
-        });
+    const { data, error } =
+        await sb
+            .from("events")
+            .select("*")
+            .order(
+                "event_date",
+                {
+                    ascending: true
+                }
+            );
 
 
     if (error) {
@@ -271,7 +482,9 @@ async function loadCalendarEvents() {
     }
 
 
-    calendarEvents = data || [];
+    calendarEvents =
+        data || [];
+
 
     renderCalendar();
 
@@ -279,7 +492,9 @@ async function loadCalendarEvents() {
 
 
 
-/* Render calendar */
+/* =========================================
+   RENDER CALENDAR
+========================================= */
 
 function renderCalendar() {
 
@@ -288,28 +503,39 @@ function renderCalendar() {
             "calendarDays"
         );
 
+
     const calendarMonth =
         document.getElementById(
             "calendarMonth"
         );
 
 
-    if (!calendarDays) {
+    if (
+        !calendarDays ||
+        !calendarMonth
+    ) {
+
         return;
+
     }
 
 
-    calendarDays.innerHTML = "";
+    calendarDays.innerHTML =
+        "";
 
 
     const year =
         calendarDate.getFullYear();
 
+
     const month =
         calendarDate.getMonth();
 
 
-    /* Month heading */
+
+    /* =====================================
+       MONTH HEADING
+    ===================================== */
 
     calendarMonth.textContent =
         calendarDate.toLocaleDateString(
@@ -321,7 +547,10 @@ function renderCalendar() {
         );
 
 
-    /* First day */
+
+    /* =====================================
+       FIRST DAY OF MONTH
+    ===================================== */
 
     const firstDay =
         new Date(
@@ -331,7 +560,10 @@ function renderCalendar() {
         ).getDay();
 
 
-    /* Number of days */
+
+    /* =====================================
+       NUMBER OF DAYS
+    ===================================== */
 
     const daysInMonth =
         new Date(
@@ -341,7 +573,10 @@ function renderCalendar() {
         ).getDate();
 
 
-    /* Empty cells */
+
+    /* =====================================
+       EMPTY CELLS
+    ===================================== */
 
     for (
         let i = 0;
@@ -350,10 +585,14 @@ function renderCalendar() {
     ) {
 
         const empty =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         empty.className =
             "calendar-day empty";
+
 
         calendarDays.appendChild(
             empty
@@ -362,7 +601,10 @@ function renderCalendar() {
     }
 
 
-    /* Actual days */
+
+    /* =====================================
+       ACTUAL DAYS
+    ===================================== */
 
     for (
         let day = 1;
@@ -371,17 +613,24 @@ function renderCalendar() {
     ) {
 
         const cell =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         cell.className =
             "calendar-day";
 
 
         const dayNumber =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         dayNumber.className =
             "calendar-day-number";
+
 
         dayNumber.textContent =
             day;
@@ -392,16 +641,24 @@ function renderCalendar() {
         );
 
 
-        /* Check for today */
+
+        /* =================================
+           CHECK FOR TODAY
+        ================================= */
 
         const today =
             new Date();
 
 
         if (
-            day === today.getDate() &&
-            month === today.getMonth() &&
-            year === today.getFullYear()
+            day ===
+                today.getDate() &&
+
+            month ===
+                today.getMonth() &&
+
+            year ===
+                today.getFullYear()
         ) {
 
             cell.classList.add(
@@ -411,7 +668,10 @@ function renderCalendar() {
         }
 
 
-        /* Create YYYY-MM-DD */
+
+        /* =================================
+           CREATE YYYY-MM-DD
+        ================================= */
 
         const monthNumber =
             String(
@@ -421,8 +681,11 @@ function renderCalendar() {
                 "0"
             );
 
+
         const dayNumberString =
-            String(day).padStart(
+            String(
+                day
+            ).padStart(
                 2,
                 "0"
             );
@@ -432,7 +695,10 @@ function renderCalendar() {
             `${year}-${monthNumber}-${dayNumberString}`;
 
 
-        /* Find events */
+
+        /* =================================
+           FIND EVENTS FOR THIS DAY
+        ================================= */
 
         const eventsForDay =
             calendarEvents.filter(
@@ -442,7 +708,10 @@ function renderCalendar() {
             );
 
 
-        /* Add events */
+
+        /* =================================
+           ADD EVENTS TO CALENDAR
+        ================================= */
 
         eventsForDay.forEach(
             event => {
@@ -477,6 +746,85 @@ function renderCalendar() {
                     )} ${event.title}`;
 
 
+
+                /* =========================
+                   EVENT TOOLTIP
+                ========================= */
+
+                let tooltip =
+                    `${event.title}\n` +
+                    `${formatTime(
+                        event.start_time
+                    )} - ${formatTime(
+                        event.end_time
+                    )}\n` +
+                    `${event.location}`;
+
+
+                if (event.address) {
+
+                    tooltip +=
+                        `\n${event.address}`;
+
+                }
+
+
+                if (
+                    event.cost !== null &&
+                    event.cost !== undefined
+                ) {
+
+                    tooltip +=
+                        `\nCost: $${Number(
+                            event.cost
+                        ).toFixed(2)}`;
+
+                }
+
+
+                tooltip +=
+                    `\nStatus: ${event.status}`;
+
+
+                eventElement.title =
+                    tooltip;
+
+
+
+                /* =========================
+                   CLICK CALENDAR EVENT
+                   FOR DIRECTIONS
+                ========================= */
+
+                if (event.address) {
+
+                    eventElement.style.cursor =
+                        "pointer";
+
+
+                    eventElement.addEventListener(
+                        "click",
+                        function() {
+
+                            const mapsURL =
+                                "https://www.google.com/maps/search/?api=1&query=" +
+                                encodeURIComponent(
+                                    event.address
+                                );
+
+
+                            window.open(
+                                mapsURL,
+                                "_blank",
+                                "noopener,noreferrer"
+                            );
+
+                        }
+                    );
+
+                }
+
+
                 cell.appendChild(
                     eventElement
                 );
@@ -495,10 +843,14 @@ function renderCalendar() {
 
 
 
-/* Previous month */
+/* =========================================
+   PREVIOUS MONTH
+========================================= */
 
 document
-    .getElementById("previousMonth")
+    .getElementById(
+        "previousMonth"
+    )
     ?.addEventListener(
         "click",
         function() {
@@ -507,6 +859,7 @@ document
                 calendarDate.getMonth() - 1
             );
 
+
             renderCalendar();
 
         }
@@ -514,10 +867,14 @@ document
 
 
 
-/* Next month */
+/* =========================================
+   NEXT MONTH
+========================================= */
 
 document
-    .getElementById("nextMonth")
+    .getElementById(
+        "nextMonth"
+    )
     ?.addEventListener(
         "click",
         function() {
@@ -526,6 +883,7 @@ document
                 calendarDate.getMonth() + 1
             );
 
+
             renderCalendar();
 
         }
@@ -533,6 +891,8 @@ document
 
 
 
-/* Start calendar */
+/* =========================================
+   START CALENDAR
+========================================= */
 
 loadCalendarEvents();
