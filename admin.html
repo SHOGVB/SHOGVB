@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SHOGVB | Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+</head>
+
+<body>
+
+
+<header class="admin-header">
+
+    <div class="admin-container">
+
+        <div>
+            <h1>🏐 SHOGVB</h1>
+            <p>Schedule Administration</p>
+        </div>
+
+        <button
+            id="logoutButton"
+            class="logout-button hidden"
+        >
+            Log Out
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="admin-container">
+
+
+    <!-- ===============================
+         LOGIN
+    ================================ -->
+
+    <section
+        id="loginSection"
+        class="admin-card login-card"
+    >
+
+        <h2>Administrator Login</h2>
+
+        <p>
+            Sign in to manage the SHOGVB schedule.
+        </p>
+
+
+        <form id="loginForm">
+
+            <label for="loginEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                required
+            >
+
+
+            <label for="loginPassword">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Log In
+            </button>
+
+
+            <p
+                id="loginMessage"
+                class="message"
+            ></p>
+
+        </form>
+
+    </section>
+
+
+    <!-- ===============================
+         DASHBOARD
+    ================================ -->
+
+    <section
+        id="dashboard"
+        class="hidden"
+    >
+
+
+        <div class="dashboard-heading">
+
+            <div>
+
+                <h2>
+                    Open Gym Schedule
+                </h2>
+
+                <p>
+                    Add, edit, cancel, or remove
+                    upcoming sessions.
+                </p>
+
+            </div>
+
+
+            <button
+                id="addEventButton"
+                class="primary-button"
+            >
+                + Add Open Gym
+            </button>
+
+        </div>
+
+
+        <div
+            id="adminEvents"
+            class="admin-events"
+        >
+            Loading...
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- ===============================
+     EVENT MODAL
+================================ -->
+
+<div
+    id="eventModal"
+    class="modal hidden"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-heading">
+
+            <h2 id="modalTitle">
+                Add Open Gym
+            </h2>
+
+            <button
+                id="closeModalButton"
+                class="close-button"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="eventForm">
+
+            <input
+                type="hidden"
+                id="eventId"
+            >
+
+
+            <label for="eventTitle">
+                Event Name
+            </label>
+
+            <input
+                type="text"
+                id="eventTitle"
+                value="Open Gym Volleyball"
+                required
+            >
+
+
+            <label for="eventDate">
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="eventDate"
+                required
+            >
+
+
+            <div class="form-row">
+
+                <div>
+
+                    <label for="startTime">
+                        Start Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="startTime"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="endTime">
+                        End Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="endTime"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label for="eventLocation">
+                Location
+            </label>
+
+            <input
+                type="text"
+                id="eventLocation"
+                value="St. Hubert Gym"
+                required
+            >
+
+
+            <label for="eventStatus">
+                Status
+            </label>
+
+            <select id="eventStatus">
+
+                <option value="Open">
+                    Open
+                </option>
+
+                <option value="Full">
+                    Full
+                </option>
+
+                <option value="Canceled">
+                    Canceled
+                </option>
+
+            </select>
+
+
+            <div class="form-row">
+
+                <div>
+
+                    <label for="eventCost">
+                        Cost
+                    </label>
+
+                    <input
+                        type="number"
+                        id="eventCost"
+                        min="0"
+                        step="0.01"
+                        placeholder="Optional"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="playerLimit">
+                        Player Limit
+                    </label>
+
+                    <input
+                        type="number"
+                        id="playerLimit"
+                        min="1"
+                        placeholder="Optional"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label for="eventNotes">
+                Notes
+            </label>
+
+            <textarea
+                id="eventNotes"
+                rows="4"
+                placeholder="Optional notes..."
+            ></textarea>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelModalButton"
+                    class="secondary-button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Save Event
+                </button>
+
+            </div>
+
+
+            <p
+                id="eventMessage"
+                class="message"
+            ></p>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/admin.js"></script>
+
+
+</body>
+
+</html>
