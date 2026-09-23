@@ -618,3 +618,193 @@ body {
         0 4px 15px
         rgba(0, 0, 0, 0.08);
 }
+/* =========================================
+   SHOGVB CALENDAR
+========================================= */
+
+.calendar-section {
+    padding: 20px 0 80px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.calendar-header h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.calendar-button {
+    background: #111;
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    width: 45px;
+    height: 45px;
+
+    font-size: 1.3rem;
+
+    cursor: pointer;
+}
+
+.calendar-button:hover {
+    opacity: 0.8;
+}
+
+
+/* Calendar */
+
+.calendar {
+    background: white;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+/* Days of week */
+
+.calendar-weekdays {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    background: #111;
+    color: white;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+.calendar-weekdays div {
+    padding: 15px 5px;
+}
+
+
+/* Calendar grid */
+
+.calendar-days {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+}
+
+
+/* Individual day */
+
+.calendar-day {
+    min-height: 130px;
+
+    padding: 10px;
+
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+
+    position: relative;
+}
+
+.calendar-day-number {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+
+/* Empty calendar cells */
+
+.calendar-day.empty {
+    background: #f7f7f7;
+}
+
+
+/* Today */
+
+.calendar-day.today {
+    background: #fffbea;
+}
+
+.calendar-day.today
+.calendar-day-number {
+    background: #111;
+    color: white;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+}
+
+
+/* Event */
+
+.calendar-event {
+    display: block;
+
+    margin-top: 8px;
+
+    padding: 6px 8px;
+
+    background: #f4cf28;
+
+    border-radius: 4px;
+
+    font-size: 0.75rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.calendar-event:hover {
+    opacity: 0.8;
+}
+
+
+/* Canceled event */
+
+.calendar-event.canceled {
+    background: #fee2e2;
+    color: #991b1b;
+
+    text-decoration: line-through;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .calendar-day {
+        min-height: 85px;
+        padding: 5px;
+    }
+
+    .calendar-event {
+        font-size: 0.65rem;
+        padding: 4px;
+    }
+
+    .calendar-weekdays div {
+        font-size: 0.75rem;
+    }
+
+}
