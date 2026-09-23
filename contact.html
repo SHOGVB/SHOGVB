@@ -4,39 +4,76 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>SHOGVB | Contact Us</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
 </head>
 
+
 <body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header class="site-header">
 
     <div class="container nav-container">
 
-        <a href="index.html" class="logo">
+        <a
+            href="index.html"
+            class="logo"
+        >
             SHOGVB
         </a>
 
-        <button class="menu-toggle" id="menuToggle">
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+        >
             ☰
         </button>
 
-        <nav class="navigation" id="navigation">
 
-            <a href="index.html">Home</a>
+        <nav
+            class="navigation"
+            id="navigation"
+        >
 
-            <a href="schedule.html">Schedule</a>
+            <a href="index.html">
+                Home
+            </a>
 
-            <a href="photos.html">Photos</a>
+            <a href="schedule.html">
+                Schedule
+            </a>
 
-            <a href="shop.html">Shop</a>
+            <a href="photos.html">
+                Photos
+            </a>
 
-            <a href="contact.html" class="active">
+            <a href="shop.html">
+                Shop
+            </a>
+
+            <a
+                href="contact.html"
+                class="active"
+            >
                 Contact Us
             </a>
 
@@ -47,29 +84,36 @@
 </header>
 
 
+
+<!-- =========================================
+     MAIN CONTENT
+========================================= -->
+
 <main>
+
+
+    <!-- PAGE HEADER -->
 
     <section class="page-header">
 
         <div class="container">
 
-            <h1>Contact Us</h1>
+            <h1>
+                Contact Us
+            </h1>
 
             <p>
-                We'd love to hear from you.
+                Have a question about SHOGVB?
+                Send us a message.
             </p>
 
         </div>
 
     </section>
 
-    <!-- MAINTENANCE NOTICE BANNER -->
-    <section class="container" style="margin-top: 20px; margin-bottom: 20px;">
-        <div style="background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 15px; border-radius: 4px; text-align: center; font-weight: bold;">
-            ⚠️ The Contact Us page is down at the moment. We are working to resolve the issue as quickly as possible. Please try again later.
-        </div>
-    </section>
 
+
+    <!-- CONTACT SECTION -->
 
     <section class="content-section">
 
@@ -78,7 +122,9 @@
             <div class="contact-grid">
 
 
-                <!-- CONTACT INFORMATION -->
+                <!-- =========================
+                     CONTACT INFORMATION
+                ========================== -->
 
                 <div class="contact-info">
 
@@ -87,22 +133,44 @@
                     </h2>
 
                     <p>
-                        Have a question or need more information?
-                        Send us a message.
+                        Have a question about an
+                        upcoming open gym, schedule,
+                        location, or SHOGVB?
                     </p>
 
                     <p>
-                        <strong>Email:</strong><br>
-                        shogvb@gmail.com
+                        Fill out the form and send us
+                        a message. We'll review your
+                        message as soon as possible.
                     </p>
-                    
+
+                    <p>
+                        You can use this form for:
+                    </p>
+
+                    <p>
+                        • Open gym questions<br>
+                        • Schedule questions<br>
+                        • Location questions<br>
+                        • Player questions<br>
+                        • General SHOGVB questions
+                    </p>
 
                 </div>
 
 
-                <!-- CONTACT FORM -->
 
-                <form class="contact-form">
+                <!-- =========================
+                     CONTACT FORM
+                ========================== -->
+
+                <form
+                    class="contact-form"
+                    id="contactForm"
+                >
+
+
+                    <!-- NAME -->
 
                     <label for="name">
                         Name
@@ -113,10 +181,13 @@
                         id="name"
                         name="name"
                         placeholder="Your Name"
+                        maxlength="100"
                         required
-                        disabled
                     >
 
+
+
+                    <!-- EMAIL -->
 
                     <label for="email">
                         Email
@@ -127,10 +198,29 @@
                         id="email"
                         name="email"
                         placeholder="Your Email"
+                        maxlength="200"
                         required
-                        disabled
                     >
 
+
+
+                    <!-- SUBJECT -->
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="What is your question about?"
+                        maxlength="200"
+                    >
+
+
+
+                    <!-- MESSAGE -->
 
                     <label for="message">
                         Message
@@ -141,19 +231,32 @@
                         name="message"
                         rows="6"
                         placeholder="Your Message"
+                        maxlength="2000"
                         required
-                        disabled
                     ></textarea>
 
+
+
+                    <!-- SUBMIT BUTTON -->
 
                     <button
                         type="submit"
                         class="button"
-                        disabled
-                        style="opacity: 0.5; cursor: not-allowed;"
+                        id="contactSubmitButton"
                     >
-                        Send Message (Unavailable)
+                        Send Message
                     </button>
+
+
+
+                    <!-- FORM STATUS -->
+
+                    <div
+                        id="contactMessage"
+                        class="contact-message"
+                        aria-live="polite"
+                    ></div>
+
 
                 </form>
 
@@ -163,15 +266,22 @@
 
     </section>
 
+
 </main>
 
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer class="site-footer">
 
     <div class="container">
 
         <p>
-            © 2026 SHOGVB. All Rights Reserved.
+            © 2026 SHOGVB.
+            All Rights Reserved.
         </p>
 
     </div>
@@ -179,7 +289,22 @@
 </footer>
 
 
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/contact.js"></script>
+
 <script src="js/script.js"></script>
 
+
 </body>
+
 </html>
