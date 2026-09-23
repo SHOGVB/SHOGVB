@@ -1,3 +1,7 @@
+/* =========================================
+   ELEMENTS
+========================================= */
+
 const loginSection =
     document.getElementById("loginSection");
 
@@ -15,7 +19,6 @@ const loginMessage =
 
 const adminEvents =
     document.getElementById("adminEvents");
-
 
 const eventModal =
     document.getElementById("eventModal");
@@ -36,16 +39,44 @@ const cancelModalButton =
     document.getElementById("cancelModalButton");
 
 
+/* MESSAGE ELEMENTS */
 
-/* ========================================
+const scheduleTabButton =
+    document.getElementById("scheduleTabButton");
+
+const messagesTabButton =
+    document.getElementById("messagesTabButton");
+
+const scheduleAdminSection =
+    document.getElementById("scheduleAdminSection");
+
+const messagesAdminSection =
+    document.getElementById("messagesAdminSection");
+
+const adminMessages =
+    document.getElementById("adminMessages");
+
+const unreadBadge =
+    document.getElementById("unreadBadge");
+
+const messageCount =
+    document.getElementById("messageCount");
+
+const unreadCount =
+    document.getElementById("unreadCount");
+
+
+
+/* =========================================
    CHECK LOGIN
-======================================== */
+========================================= */
 
 async function checkSession() {
 
     const {
         data: { session }
-    } = await sb.auth.getSession();
+    } =
+        await sb.auth.getSession();
 
 
     if (session) {
@@ -64,13 +95,23 @@ async function checkSession() {
 
 function showDashboard() {
 
-    loginSection.classList.add("hidden");
+    loginSection.classList.add(
+        "hidden"
+    );
 
-    dashboard.classList.remove("hidden");
+    dashboard.classList.remove(
+        "hidden"
+    );
 
-    logoutButton.classList.remove("hidden");
+    logoutButton.classList.remove(
+        "hidden"
+    );
+
+    showScheduleTab();
 
     loadAdminEvents();
+
+    loadMessages();
 
 }
 
@@ -78,19 +119,25 @@ function showDashboard() {
 
 function showLogin() {
 
-    dashboard.classList.add("hidden");
+    dashboard.classList.add(
+        "hidden"
+    );
 
-    logoutButton.classList.add("hidden");
+    logoutButton.classList.add(
+        "hidden"
+    );
 
-    loginSection.classList.remove("hidden");
+    loginSection.classList.remove(
+        "hidden"
+    );
 
 }
 
 
 
-/* ========================================
+/* =========================================
    LOGIN
-======================================== */
+========================================= */
 
 loginForm.addEventListener(
     "submit",
@@ -98,29 +145,36 @@ loginForm.addEventListener(
 
         event.preventDefault();
 
+
         loginMessage.textContent =
             "Logging in...";
 
 
         const email =
             document
-                .getElementById("loginEmail")
+                .getElementById(
+                    "loginEmail"
+                )
                 .value;
+
 
         const password =
             document
-                .getElementById("loginPassword")
+                .getElementById(
+                    "loginPassword"
+                )
                 .value;
 
 
         const { error } =
-            await sb.auth.signInWithPassword({
+            await sb.auth
+                .signInWithPassword({
 
-                email: email,
+                    email: email,
 
-                password: password
+                    password: password
 
-            });
+                });
 
 
         if (error) {
@@ -131,10 +185,12 @@ loginForm.addEventListener(
                 "Unable to log in. Check your email and password.";
 
             return;
+
         }
 
 
-        loginMessage.textContent = "";
+        loginMessage.textContent =
+            "";
 
         loginForm.reset();
 
@@ -145,9 +201,9 @@ loginForm.addEventListener(
 
 
 
-/* ========================================
+/* =========================================
    LOGOUT
-======================================== */
+========================================= */
 
 logoutButton.addEventListener(
     "click",
@@ -162,9 +218,76 @@ logoutButton.addEventListener(
 
 
 
-/* ========================================
+/* =========================================
+   ADMIN TABS
+========================================= */
+
+scheduleTabButton.addEventListener(
+    "click",
+    showScheduleTab
+);
+
+
+messagesTabButton.addEventListener(
+    "click",
+    function() {
+
+        showMessagesTab();
+
+        loadMessages();
+
+    }
+);
+
+
+
+function showScheduleTab() {
+
+    scheduleTabButton
+        .classList
+        .add("active");
+
+    messagesTabButton
+        .classList
+        .remove("active");
+
+    scheduleAdminSection
+        .classList
+        .remove("hidden");
+
+    messagesAdminSection
+        .classList
+        .add("hidden");
+
+}
+
+
+
+function showMessagesTab() {
+
+    messagesTabButton
+        .classList
+        .add("active");
+
+    scheduleTabButton
+        .classList
+        .remove("active");
+
+    messagesAdminSection
+        .classList
+        .remove("hidden");
+
+    scheduleAdminSection
+        .classList
+        .add("hidden");
+
+}
+
+
+
+/* =========================================
    LOAD EVENTS
-======================================== */
+========================================= */
 
 async function loadAdminEvents() {
 
@@ -194,23 +317,30 @@ async function loadAdminEvents() {
             "<p>Unable to load events.</p>";
 
         return;
+
     }
 
 
-    if (!events || events.length === 0) {
+    if (
+        !events ||
+        events.length === 0
+    ) {
 
         adminEvents.innerHTML = `
             <div class="admin-card">
+
                 <h3>No events yet</h3>
 
                 <p>
                     Click "Add Open Gym"
                     to create your first event.
                 </p>
+
             </div>
         `;
 
         return;
+
     }
 
 
@@ -220,55 +350,78 @@ async function loadAdminEvents() {
     events.forEach(event => {
 
         const card =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         card.className =
             "admin-event";
 
 
         const info =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         const title =
-            document.createElement("h3");
+            document.createElement(
+                "h3"
+            );
 
         title.textContent =
             event.title;
 
 
         const date =
-            document.createElement("p");
+            document.createElement(
+                "p"
+            );
 
         date.textContent =
-            formatDate(event.event_date);
+            formatDate(
+                event.event_date
+            );
 
 
         const time =
-            document.createElement("p");
+            document.createElement(
+                "p"
+            );
 
         time.textContent =
-            `${formatTime(event.start_time)} – ${formatTime(event.end_time)}`;
+            `${formatTime(
+                event.start_time
+            )} – ${formatTime(
+                event.end_time
+            )}`;
 
 
         const location =
-            document.createElement("p");
+            document.createElement(
+                "p"
+            );
 
         location.textContent =
             event.location;
 
 
         const address =
-            document.createElement("p");
+            document.createElement(
+                "p"
+            );
 
         address.textContent =
             event.address || "";
 
 
         const status =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
-        status.className = "status";
+        status.className =
+            "status";
 
         status.textContent =
             event.status;
@@ -283,22 +436,32 @@ async function loadAdminEvents() {
 
 
         if (event.address) {
-            info.append(address);
+
+            info.append(
+                address
+            );
+
         }
 
 
-        info.append(status);
+        info.append(
+            status
+        );
 
 
         const actions =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         actions.className =
             "admin-event-actions";
 
 
         const editButton =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
 
         editButton.className =
             "secondary-button";
@@ -308,12 +471,17 @@ async function loadAdminEvents() {
 
         editButton.addEventListener(
             "click",
-            () => openEditModal(event)
+            () =>
+                openEditModal(
+                    event
+                )
         );
 
 
         const cancelButton =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
 
         cancelButton.className =
             "secondary-button";
@@ -326,12 +494,17 @@ async function loadAdminEvents() {
 
         cancelButton.addEventListener(
             "click",
-            () => toggleCanceled(event)
+            () =>
+                toggleCanceled(
+                    event
+                )
         );
 
 
         const deleteButton =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
 
         deleteButton.className =
             "danger-button";
@@ -342,7 +515,10 @@ async function loadAdminEvents() {
 
         deleteButton.addEventListener(
             "click",
-            () => deleteEvent(event)
+            () =>
+                deleteEvent(
+                    event
+                )
         );
 
 
@@ -359,7 +535,9 @@ async function loadAdminEvents() {
         );
 
 
-        adminEvents.appendChild(card);
+        adminEvents.appendChild(
+            card
+        );
 
     });
 
@@ -367,9 +545,9 @@ async function loadAdminEvents() {
 
 
 
-/* ========================================
+/* =========================================
    ADD EVENT
-======================================== */
+========================================= */
 
 addEventButton.addEventListener(
     "click",
@@ -377,132 +555,183 @@ addEventButton.addEventListener(
 
         eventForm.reset();
 
-        document
-            .getElementById("eventId")
-            .value = "";
 
         document
-            .getElementById("eventTitle")
+            .getElementById(
+                "eventId"
+            )
+            .value = "";
+
+
+        document
+            .getElementById(
+                "eventTitle"
+            )
             .value =
             "Open Gym Volleyball";
 
+
         document
-            .getElementById("eventLocation")
+            .getElementById(
+                "eventLocation"
+            )
             .value =
             "St. Hubert Gym";
 
-        document
-            .getElementById("eventAddress")
-            .value = "";
 
         document
-            .getElementById("eventStatus")
+            .getElementById(
+                "eventAddress"
+            )
+            .value = "";
+
+
+        document
+            .getElementById(
+                "eventStatus"
+            )
             .value =
             "Open";
 
+
         document
-            .getElementById("modalTitle")
+            .getElementById(
+                "modalTitle"
+            )
             .textContent =
             "Add Open Gym";
 
-        eventMessage.textContent = "";
 
-        eventModal.classList.remove("hidden");
+        eventMessage.textContent =
+            "";
+
+
+        eventModal.classList.remove(
+            "hidden"
+        );
 
     }
 );
 
 
 
-/* ========================================
+/* =========================================
    EDIT EVENT
-======================================== */
+========================================= */
 
 function openEditModal(event) {
 
     document
-        .getElementById("modalTitle")
+        .getElementById(
+            "modalTitle"
+        )
         .textContent =
         "Edit Open Gym";
 
 
     document
-        .getElementById("eventId")
+        .getElementById(
+            "eventId"
+        )
         .value =
         event.id;
 
 
     document
-        .getElementById("eventTitle")
+        .getElementById(
+            "eventTitle"
+        )
         .value =
         event.title;
 
 
     document
-        .getElementById("eventDate")
+        .getElementById(
+            "eventDate"
+        )
         .value =
         event.event_date;
 
 
     document
-        .getElementById("startTime")
+        .getElementById(
+            "startTime"
+        )
         .value =
         event.start_time;
 
 
     document
-        .getElementById("endTime")
+        .getElementById(
+            "endTime"
+        )
         .value =
         event.end_time;
 
 
     document
-        .getElementById("eventLocation")
+        .getElementById(
+            "eventLocation"
+        )
         .value =
         event.location;
 
 
     document
-        .getElementById("eventAddress")
+        .getElementById(
+            "eventAddress"
+        )
         .value =
         event.address ?? "";
 
 
     document
-        .getElementById("eventStatus")
+        .getElementById(
+            "eventStatus"
+        )
         .value =
         event.status;
 
 
     document
-        .getElementById("eventCost")
+        .getElementById(
+            "eventCost"
+        )
         .value =
         event.cost ?? "";
 
 
     document
-        .getElementById("playerLimit")
+        .getElementById(
+            "playerLimit"
+        )
         .value =
         event.player_limit ?? "";
 
 
     document
-        .getElementById("eventNotes")
+        .getElementById(
+            "eventNotes"
+        )
         .value =
         event.notes ?? "";
 
 
-    eventMessage.textContent = "";
+    eventMessage.textContent =
+        "";
 
-    eventModal.classList.remove("hidden");
+
+    eventModal.classList.remove(
+        "hidden"
+    );
 
 }
 
 
 
-/* ========================================
+/* =========================================
    SAVE EVENT
-======================================== */
+========================================= */
 
 eventForm.addEventListener(
     "submit",
@@ -517,7 +746,9 @@ eventForm.addEventListener(
 
         const id =
             document
-                .getElementById("eventId")
+                .getElementById(
+                    "eventId"
+                )
                 .value;
 
 
@@ -525,49 +756,73 @@ eventForm.addEventListener(
 
             title:
                 document
-                    .getElementById("eventTitle")
-                    .value.trim(),
+                    .getElementById(
+                        "eventTitle"
+                    )
+                    .value
+                    .trim(),
 
             event_date:
                 document
-                    .getElementById("eventDate")
+                    .getElementById(
+                        "eventDate"
+                    )
                     .value,
 
             start_time:
                 document
-                    .getElementById("startTime")
+                    .getElementById(
+                        "startTime"
+                    )
                     .value,
 
             end_time:
                 document
-                    .getElementById("endTime")
+                    .getElementById(
+                        "endTime"
+                    )
                     .value,
 
             location:
                 document
-                    .getElementById("eventLocation")
-                    .value.trim(),
+                    .getElementById(
+                        "eventLocation"
+                    )
+                    .value
+                    .trim(),
 
             address:
                 document
-                    .getElementById("eventAddress")
-                    .value.trim() || null,
+                    .getElementById(
+                        "eventAddress"
+                    )
+                    .value
+                    .trim() || null,
 
             status:
                 document
-                    .getElementById("eventStatus")
+                    .getElementById(
+                        "eventStatus"
+                    )
                     .value,
 
             cost:
-                getOptionalNumber("eventCost"),
+                getOptionalNumber(
+                    "eventCost"
+                ),
 
             player_limit:
-                getOptionalInteger("playerLimit"),
+                getOptionalInteger(
+                    "playerLimit"
+                ),
 
             notes:
                 document
-                    .getElementById("eventNotes")
-                    .value.trim() || null
+                    .getElementById(
+                        "eventNotes"
+                    )
+                    .value
+                    .trim() || null
 
         };
 
@@ -581,18 +836,25 @@ eventForm.addEventListener(
                 await sb
                     .from("events")
                     .update(eventData)
-                    .eq("id", id);
+                    .eq(
+                        "id",
+                        id
+                    );
 
-            error = response.error;
+            error =
+                response.error;
 
         } else {
 
             const response =
                 await sb
                     .from("events")
-                    .insert(eventData);
+                    .insert(
+                        eventData
+                    );
 
-            error = response.error;
+            error =
+                response.error;
 
         }
 
@@ -605,10 +867,14 @@ eventForm.addEventListener(
                 "Unable to save event.";
 
             return;
+
         }
 
 
-        eventModal.classList.add("hidden");
+        eventModal.classList.add(
+            "hidden"
+        );
+
 
         await loadAdminEvents();
 
@@ -617,9 +883,9 @@ eventForm.addEventListener(
 
 
 
-/* ========================================
-   CANCEL / REOPEN
-======================================== */
+/* =========================================
+   CANCEL / REOPEN EVENT
+========================================= */
 
 async function toggleCanceled(event) {
 
@@ -635,7 +901,10 @@ async function toggleCanceled(event) {
             .update({
                 status: newStatus
             })
-            .eq("id", event.id);
+            .eq(
+                "id",
+                event.id
+            );
 
 
     if (error) {
@@ -647,6 +916,7 @@ async function toggleCanceled(event) {
         );
 
         return;
+
     }
 
 
@@ -656,9 +926,9 @@ async function toggleCanceled(event) {
 
 
 
-/* ========================================
-   DELETE
-======================================== */
+/* =========================================
+   DELETE EVENT
+========================================= */
 
 async function deleteEvent(event) {
 
@@ -669,7 +939,9 @@ async function deleteEvent(event) {
 
 
     if (!confirmed) {
+
         return;
+
     }
 
 
@@ -677,7 +949,10 @@ async function deleteEvent(event) {
         await sb
             .from("events")
             .delete()
-            .eq("id", event.id);
+            .eq(
+                "id",
+                event.id
+            );
 
 
     if (error) {
@@ -689,6 +964,7 @@ async function deleteEvent(event) {
         );
 
         return;
+
     }
 
 
@@ -698,13 +974,541 @@ async function deleteEvent(event) {
 
 
 
-/* ========================================
-   MODAL
-======================================== */
+/* =========================================
+   LOAD CONTACT MESSAGES
+========================================= */
+
+async function loadMessages() {
+
+    adminMessages.innerHTML =
+        "<p>Loading messages...</p>";
+
+
+    const {
+        data: messages,
+        error
+    } =
+        await sb
+            .from(
+                "contact_messages"
+            )
+            .select("*")
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Unable to load messages:",
+            error
+        );
+
+
+        adminMessages.innerHTML = `
+            <div class="empty-state">
+
+                <h3>
+                    Unable to load messages
+                </h3>
+
+                <p>
+                    Check your Supabase
+                    contact_messages table
+                    and security policies.
+                </p>
+
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    const allMessages =
+        messages || [];
+
+
+    const unreadMessages =
+        allMessages.filter(
+            message =>
+                !message.is_read
+        );
+
+
+    updateMessageCounts(
+        allMessages.length,
+        unreadMessages.length
+    );
+
+
+    if (
+        allMessages.length === 0
+    ) {
+
+        adminMessages.innerHTML = `
+            <div class="empty-state">
+
+                <h3>
+                    No Messages
+                </h3>
+
+                <p>
+                    Contact Us submissions
+                    will appear here.
+                </p>
+
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    adminMessages.innerHTML =
+        "";
+
+
+    allMessages.forEach(
+        message => {
+
+            const card =
+                createMessageCard(
+                    message
+                );
+
+
+            adminMessages.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   CREATE MESSAGE CARD
+========================================= */
+
+function createMessageCard(message) {
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        "admin-message";
+
+
+    if (!message.is_read) {
+
+        card.classList.add(
+            "unread"
+        );
+
+    }
+
+
+
+    /* HEADER */
+
+    const header =
+        document.createElement(
+            "div"
+        );
+
+
+    header.className =
+        "admin-message-header";
+
+
+
+    const senderInfo =
+        document.createElement(
+            "div"
+        );
+
+
+    const name =
+        document.createElement(
+            "h3"
+        );
+
+
+    name.textContent =
+        message.name ||
+        "Unknown Sender";
+
+
+
+    if (!message.is_read) {
+
+        const newLabel =
+            document.createElement(
+                "span"
+            );
+
+
+        newLabel.className =
+            "new-message-label";
+
+
+        newLabel.textContent =
+            "NEW";
+
+
+        name.appendChild(
+            newLabel
+        );
+
+    }
+
+
+
+    const email =
+        document.createElement(
+            "p"
+        );
+
+
+    email.className =
+        "admin-message-email";
+
+
+    const emailLink =
+        document.createElement(
+            "a"
+        );
+
+
+    emailLink.href =
+        `mailto:${message.email}`;
+
+
+    emailLink.textContent =
+        message.email;
+
+
+    email.appendChild(
+        emailLink
+    );
+
+
+    senderInfo.append(
+        name,
+        email
+    );
+
+
+
+    const date =
+        document.createElement(
+            "div"
+        );
+
+
+    date.className =
+        "admin-message-date";
+
+
+    date.textContent =
+        formatMessageDate(
+            message.created_at
+        );
+
+
+
+    header.append(
+        senderInfo,
+        date
+    );
+
+
+
+    /* SUBJECT */
+
+    const subject =
+        document.createElement(
+            "div"
+        );
+
+
+    subject.className =
+        "admin-message-subject";
+
+
+    subject.textContent =
+        message.subject
+            ? `Subject: ${message.subject}`
+            : "Subject: General Question";
+
+
+
+    /* MESSAGE */
+
+    const body =
+        document.createElement(
+            "div"
+        );
+
+
+    body.className =
+        "admin-message-body";
+
+
+    body.textContent =
+        message.message;
+
+
+
+    /* ACTIONS */
+
+    const actions =
+        document.createElement(
+            "div"
+        );
+
+
+    actions.className =
+        "admin-message-actions";
+
+
+
+    const readButton =
+        document.createElement(
+            "button"
+        );
+
+
+    readButton.className =
+        "secondary-button";
+
+
+    readButton.textContent =
+        message.is_read
+            ? "Mark Unread"
+            : "Mark Read";
+
+
+    readButton.addEventListener(
+        "click",
+        () =>
+            toggleMessageRead(
+                message
+            )
+    );
+
+
+
+    const deleteButton =
+        document.createElement(
+            "button"
+        );
+
+
+    deleteButton.className =
+        "danger-button";
+
+
+    deleteButton.textContent =
+        "Delete";
+
+
+    deleteButton.addEventListener(
+        "click",
+        () =>
+            deleteMessage(
+                message
+            )
+    );
+
+
+
+    actions.append(
+        readButton,
+        deleteButton
+    );
+
+
+
+    card.append(
+        header,
+        subject,
+        body,
+        actions
+    );
+
+
+    return card;
+
+}
+
+
+
+/* =========================================
+   MESSAGE COUNTS
+========================================= */
+
+function updateMessageCounts(
+    total,
+    unread
+) {
+
+    messageCount.textContent =
+        `${total} ${
+            total === 1
+                ? "Message"
+                : "Messages"
+        }`;
+
+
+    unreadCount.textContent =
+        `${unread} Unread`;
+
+
+    unreadBadge.textContent =
+        unread;
+
+
+    if (unread > 0) {
+
+        unreadBadge
+            .classList
+            .remove(
+                "hidden"
+            );
+
+    } else {
+
+        unreadBadge
+            .classList
+            .add(
+                "hidden"
+            );
+
+    }
+
+}
+
+
+
+/* =========================================
+   MARK READ / UNREAD
+========================================= */
+
+async function toggleMessageRead(
+    message
+) {
+
+    const newStatus =
+        !message.is_read;
+
+
+    const { error } =
+        await sb
+            .from(
+                "contact_messages"
+            )
+            .update({
+                is_read: newStatus
+            })
+            .eq(
+                "id",
+                message.id
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to update the message."
+        );
+
+        return;
+
+    }
+
+
+    loadMessages();
+
+}
+
+
+
+/* =========================================
+   DELETE MESSAGE
+========================================= */
+
+async function deleteMessage(
+    message
+) {
+
+    const confirmed =
+        confirm(
+            `Delete the message from ${message.name}?`
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    const { error } =
+        await sb
+            .from(
+                "contact_messages"
+            )
+            .delete()
+            .eq(
+                "id",
+                message.id
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to delete the message."
+        );
+
+        return;
+
+    }
+
+
+    loadMessages();
+
+}
+
+
+
+/* =========================================
+   EVENT MODAL
+========================================= */
 
 function closeModal() {
 
-    eventModal.classList.add("hidden");
+    eventModal.classList.add(
+        "hidden"
+    );
 
 }
 
@@ -725,8 +1529,13 @@ eventModal.addEventListener(
     "click",
     function(event) {
 
-        if (event.target === eventModal) {
+        if (
+            event.target ===
+            eventModal
+        ) {
+
             closeModal();
+
         }
 
     }
@@ -734,9 +1543,9 @@ eventModal.addEventListener(
 
 
 
-/* ========================================
+/* =========================================
    HELPERS
-======================================== */
+========================================= */
 
 function getOptionalNumber(id) {
 
@@ -745,11 +1554,13 @@ function getOptionalNumber(id) {
             .getElementById(id)
             .value;
 
+
     return value === ""
         ? null
         : Number(value);
 
 }
+
 
 
 function getOptionalInteger(id) {
@@ -759,18 +1570,28 @@ function getOptionalInteger(id) {
             .getElementById(id)
             .value;
 
+
     return value === ""
         ? null
-        : parseInt(value, 10);
+        : parseInt(
+            value,
+            10
+        );
 
 }
 
+
+
+/* =========================================
+   FORMAT EVENT DATE
+========================================= */
 
 function formatDate(dateString) {
 
     const date =
         new Date(
-            dateString + "T00:00:00"
+            dateString +
+            "T00:00:00"
         );
 
 
@@ -787,10 +1608,17 @@ function formatDate(dateString) {
 }
 
 
+
+/* =========================================
+   FORMAT EVENT TIME
+========================================= */
+
 function formatTime(time) {
 
     if (!time) {
+
         return "";
+
     }
 
 
@@ -798,7 +1626,9 @@ function formatTime(time) {
         time.split(":");
 
 
-    const date = new Date();
+    const date =
+        new Date();
+
 
     date.setHours(
         Number(hours),
@@ -818,8 +1648,44 @@ function formatTime(time) {
 
 
 
-/* ========================================
+/* =========================================
+   FORMAT MESSAGE DATE
+========================================= */
+
+function formatMessageDate(
+    dateString
+) {
+
+    if (!dateString) {
+
+        return "";
+
+    }
+
+
+    const date =
+        new Date(
+            dateString
+        );
+
+
+    return date.toLocaleString(
+        "en-US",
+        {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+
+/* =========================================
    START
-======================================== */
+========================================= */
 
 checkSession();
