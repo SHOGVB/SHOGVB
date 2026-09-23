@@ -1381,3 +1381,66 @@ body {
     }
 
 }
+/* =========================================
+   CONTACT FORM STATUS
+========================================= */
+
+.contact-message {
+    margin-top: 20px;
+
+    padding: 12px 15px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    display: none;
+}
+
+
+/* SUCCESS MESSAGE */
+
+.contact-message.contact-success {
+    display: block;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    border: 1px solid #86efac;
+}
+
+
+/* ERROR MESSAGE */
+
+.contact-message.contact-error {
+    display: block;
+
+    background: #fee2e2;
+
+    color: #991b1b;
+
+    border: 1px solid #fca5a5;
+}
+
+
+/* SENDING MESSAGE */
+
+.contact-message.contact-sending {
+    display: block;
+
+    background: #fffbea;
+
+    color: #665500;
+
+    border: 1px solid var(--brand-yellow);
+}
+
+
+/* DISABLED SEND BUTTON */
+
+.contact-form button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
