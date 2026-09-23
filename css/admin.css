@@ -1,6 +1,11 @@
+/* =========================================
+   GENERAL
+========================================= */
+
 * {
     box-sizing: border-box;
 }
+
 
 body {
     margin: 0;
@@ -18,14 +23,21 @@ body {
 
 .admin-container {
     width: 92%;
+
     max-width: 1100px;
 
     margin: auto;
 }
 
 
+
+/* =========================================
+   HEADER
+========================================= */
+
 .admin-header {
     background: #111827;
+
     color: white;
 
     padding: 20px 0;
@@ -38,6 +50,7 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 }
 
@@ -53,6 +66,11 @@ body {
     opacity: 0.8;
 }
 
+
+
+/* =========================================
+   ADMIN CARD
+========================================= */
 
 .admin-card {
     background: white;
@@ -74,10 +92,16 @@ body {
 }
 
 
+
+/* =========================================
+   FORMS
+========================================= */
+
 label {
     display: block;
 
     margin-top: 18px;
+
     margin-bottom: 6px;
 
     font-weight: bold;
@@ -101,6 +125,11 @@ textarea {
 }
 
 
+
+/* =========================================
+   BUTTONS
+========================================= */
+
 .primary-button,
 .secondary-button,
 .danger-button,
@@ -121,37 +150,157 @@ textarea {
 
 .primary-button {
     background: #1d4ed8;
+
     color: white;
 
     margin-top: 20px;
 }
 
 
+.primary-button:hover {
+    background: #1e40af;
+}
+
+
 .secondary-button {
     background: #e5e7eb;
+
     color: #111;
+}
+
+
+.secondary-button:hover {
+    background: #d1d5db;
 }
 
 
 .danger-button {
     background: #b91c1c;
+
     color: white;
+}
+
+
+.danger-button:hover {
+    background: #991b1b;
 }
 
 
 .logout-button {
     background: white;
+
     color: #111827;
 }
 
+
+
+/* =========================================
+   ADMIN TABS
+========================================= */
+
+.admin-tabs {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 35px;
+
+    border-bottom:
+        2px solid #d1d5db;
+}
+
+
+.admin-tab {
+    position: relative;
+
+    background: transparent;
+
+    border: none;
+
+    border-bottom:
+        4px solid transparent;
+
+    padding: 14px 20px;
+
+    margin-bottom: -2px;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    color: #6b7280;
+}
+
+
+.admin-tab:hover {
+    color: #111827;
+}
+
+
+.admin-tab.active {
+    color: #111827;
+
+    border-bottom-color: #ffd204;
+}
+
+
+
+/* =========================================
+   UNREAD BADGE
+========================================= */
+
+.unread-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 22px;
+
+    height: 22px;
+
+    padding: 0 6px;
+
+    margin-left: 6px;
+
+    border-radius: 20px;
+
+    background: #dc2626;
+
+    color: white;
+
+    font-size: 0.75rem;
+}
+
+
+
+/* =========================================
+   DASHBOARD HEADING
+========================================= */
 
 .dashboard-heading {
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 
     margin-bottom: 30px;
+}
+
+
+.dashboard-heading h2 {
+    margin-bottom: 5px;
+}
+
+
+.dashboard-heading p {
+    margin-top: 0;
+
+    color: #6b7280;
 }
 
 
@@ -159,6 +308,11 @@ textarea {
     margin: 0;
 }
 
+
+
+/* =========================================
+   EVENTS
+========================================= */
 
 .admin-events {
     display: flex;
@@ -207,6 +361,11 @@ textarea {
 }
 
 
+
+/* =========================================
+   EVENT STATUS
+========================================= */
+
 .status {
     display: inline-block;
 
@@ -222,6 +381,207 @@ textarea {
 }
 
 
+
+/* =========================================
+   MESSAGE SUMMARY
+========================================= */
+
+.message-summary {
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.message-summary span {
+    background: #e5e7eb;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 0.85rem;
+
+    font-weight: bold;
+}
+
+
+
+/* =========================================
+   ADMIN MESSAGES
+========================================= */
+
+.admin-messages {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+.admin-message {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    border-left:
+        5px solid transparent;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+.admin-message.unread {
+    border-left-color: #ffd204;
+
+    background: #fffef5;
+}
+
+
+.admin-message-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    align-items: flex-start;
+}
+
+
+.admin-message h3 {
+    margin: 0 0 5px;
+}
+
+
+.admin-message-email {
+    margin: 3px 0;
+
+    color: #4b5563;
+}
+
+
+.admin-message-email a {
+    color: #1d4ed8;
+
+    text-decoration: none;
+}
+
+
+.admin-message-email a:hover {
+    text-decoration: underline;
+}
+
+
+.admin-message-date {
+    color: #6b7280;
+
+    font-size: 0.85rem;
+
+    white-space: nowrap;
+}
+
+
+.admin-message-subject {
+    margin-top: 18px;
+
+    font-weight: bold;
+
+    font-size: 1.05rem;
+}
+
+
+.admin-message-body {
+    margin-top: 12px;
+
+    padding: 15px;
+
+    background: #f9fafb;
+
+    border-radius: 6px;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+
+    line-height: 1.6;
+}
+
+
+.admin-message-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+
+/* =========================================
+   NEW MESSAGE LABEL
+========================================= */
+
+.new-message-label {
+    display: inline-block;
+
+    margin-left: 8px;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    background: #ffd204;
+
+    color: #111827;
+
+    font-size: 0.7rem;
+
+    font-weight: bold;
+
+    vertical-align: middle;
+}
+
+
+
+/* =========================================
+   EMPTY MESSAGE
+========================================= */
+
+.empty-state {
+    background: white;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+.empty-state h3 {
+    margin-top: 0;
+}
+
+
+
+/* =========================================
+   MODAL
+========================================= */
+
 .modal {
     position: fixed;
 
@@ -233,6 +593,7 @@ textarea {
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     padding: 20px;
@@ -245,6 +606,7 @@ textarea {
     background: white;
 
     width: 100%;
+
     max-width: 600px;
 
     padding: 30px;
@@ -261,6 +623,7 @@ textarea {
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 }
 
@@ -276,6 +639,11 @@ textarea {
 }
 
 
+
+/* =========================================
+   FORM ROW
+========================================= */
+
 .form-row {
     display: grid;
 
@@ -285,6 +653,11 @@ textarea {
     gap: 20px;
 }
 
+
+
+/* =========================================
+   MODAL ACTIONS
+========================================= */
 
 .modal-actions {
     display: flex;
@@ -302,6 +675,11 @@ textarea {
 }
 
 
+
+/* =========================================
+   GENERAL
+========================================= */
+
 .message {
     margin-top: 15px;
 }
@@ -312,7 +690,36 @@ textarea {
 }
 
 
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 700px) {
+
+    .admin-header .admin-container {
+        gap: 20px;
+    }
+
+
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+
+
+    .admin-tabs {
+        width: 100%;
+    }
+
+
+    .admin-tab {
+        flex: 1;
+
+        padding-left: 10px;
+
+        padding-right: 10px;
+    }
+
 
     .dashboard-heading {
         flex-direction: column;
@@ -333,8 +740,26 @@ textarea {
     }
 
 
+    .admin-message-header {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    .admin-message-date {
+        white-space: normal;
+    }
+
+
+    .message-summary {
+        flex-wrap: wrap;
+    }
+
+
     .form-row {
         grid-template-columns: 1fr;
+
         gap: 0;
     }
 
