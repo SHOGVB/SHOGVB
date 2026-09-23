@@ -194,7 +194,6 @@ async function loadAdminEvents() {
             "<p>Unable to load events.</p>";
 
         return;
-
     }
 
 
@@ -212,7 +211,6 @@ async function loadAdminEvents() {
         `;
 
         return;
-
     }
 
 
@@ -260,6 +258,13 @@ async function loadAdminEvents() {
             event.location;
 
 
+        const address =
+            document.createElement("p");
+
+        address.textContent =
+            event.address || "";
+
+
         const status =
             document.createElement("span");
 
@@ -273,9 +278,16 @@ async function loadAdminEvents() {
             title,
             date,
             time,
-            location,
-            status
+            location
         );
+
+
+        if (event.address) {
+            info.append(address);
+        }
+
+
+        info.append(status);
 
 
         const actions =
@@ -380,6 +392,10 @@ addEventButton.addEventListener(
             "St. Hubert Gym";
 
         document
+            .getElementById("eventAddress")
+            .value = "";
+
+        document
             .getElementById("eventStatus")
             .value =
             "Open";
@@ -444,6 +460,12 @@ function openEditModal(event) {
         .getElementById("eventLocation")
         .value =
         event.location;
+
+
+    document
+        .getElementById("eventAddress")
+        .value =
+        event.address ?? "";
 
 
     document
@@ -526,6 +548,11 @@ eventForm.addEventListener(
                     .getElementById("eventLocation")
                     .value.trim(),
 
+            address:
+                document
+                    .getElementById("eventAddress")
+                    .value.trim() || null,
+
             status:
                 document
                     .getElementById("eventStatus")
@@ -578,7 +605,6 @@ eventForm.addEventListener(
                 "Unable to save event.";
 
             return;
-
         }
 
 
@@ -621,7 +647,6 @@ async function toggleCanceled(event) {
         );
 
         return;
-
     }
 
 
@@ -664,7 +689,6 @@ async function deleteEvent(event) {
         );
 
         return;
-
     }
 
 
