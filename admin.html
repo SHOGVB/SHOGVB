@@ -28,7 +28,7 @@
 
         <div>
             <h1>🏐 SHOGVB</h1>
-            <p>Schedule Administration</p>
+            <p>Administration</p>
         </div>
 
         <button
@@ -46,9 +46,9 @@
 <main class="admin-container">
 
 
-    <!-- ===============================
+    <!-- =====================================
          LOGIN
-    ================================ -->
+    ====================================== -->
 
     <section
         id="loginSection"
@@ -58,7 +58,7 @@
         <h2>Administrator Login</h2>
 
         <p>
-            Sign in to manage the SHOGVB schedule.
+            Sign in to manage SHOGVB.
         </p>
 
 
@@ -104,9 +104,10 @@
     </section>
 
 
-    <!-- ===============================
+
+    <!-- =====================================
          DASHBOARD
-    ================================ -->
+    ====================================== -->
 
     <section
         id="dashboard"
@@ -114,38 +115,134 @@
     >
 
 
-        <div class="dashboard-heading">
+        <!-- ADMIN TABS -->
 
-            <div>
+        <div class="admin-tabs">
 
-                <h2>
-                    Open Gym Schedule
-                </h2>
-
-                <p>
-                    Add, edit, cancel, or remove
-                    upcoming sessions.
-                </p>
-
-            </div>
+            <button
+                id="scheduleTabButton"
+                class="admin-tab active"
+                type="button"
+            >
+                Schedule
+            </button>
 
 
             <button
-                id="addEventButton"
-                class="primary-button"
+                id="messagesTabButton"
+                class="admin-tab"
+                type="button"
             >
-                + Add Open Gym
+                Messages
+
+                <span
+                    id="unreadBadge"
+                    class="unread-badge hidden"
+                >
+                    0
+                </span>
+
             </button>
 
         </div>
 
 
-        <div
-            id="adminEvents"
-            class="admin-events"
+
+        <!-- =================================
+             SCHEDULE SECTION
+        ================================== -->
+
+        <section id="scheduleAdminSection">
+
+
+            <div class="dashboard-heading">
+
+                <div>
+
+                    <h2>
+                        Open Gym Schedule
+                    </h2>
+
+                    <p>
+                        Add, edit, cancel, or remove
+                        upcoming sessions.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="addEventButton"
+                    class="primary-button"
+                >
+                    + Add Open Gym
+                </button>
+
+            </div>
+
+
+            <div
+                id="adminEvents"
+                class="admin-events"
+            >
+                Loading...
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================
+             MESSAGES SECTION
+        ================================== -->
+
+        <section
+            id="messagesAdminSection"
+            class="hidden"
         >
-            Loading...
-        </div>
+
+
+            <div class="dashboard-heading">
+
+                <div>
+
+                    <h2>
+                        Contact Messages
+                    </h2>
+
+                    <p>
+                        View messages submitted through
+                        the SHOGVB Contact Us page.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="message-summary">
+
+                <span id="messageCount">
+                    0 Messages
+                </span>
+
+                <span id="unreadCount">
+                    0 Unread
+                </span>
+
+            </div>
+
+
+            <div
+                id="adminMessages"
+                class="admin-messages"
+            >
+                Loading...
+            </div>
+
+
+        </section>
 
 
     </section>
@@ -154,9 +251,10 @@
 </main>
 
 
-<!-- ===============================
+
+<!-- =========================================
      EVENT MODAL
-================================ -->
+========================================= -->
 
 <div
     id="eventModal"
@@ -248,24 +346,28 @@
 
 
             <label for="eventLocation">
-                Location
+                Location Name
             </label>
 
             <input
                 type="text"
                 id="eventLocation"
                 value="St. Hubert Gym"
+                placeholder="Example: Wood Dale Park District"
                 required
             >
-<label for="eventAddress">
-    Address
-</label>
 
-<input
-    type="text"
-    id="eventAddress"
-    placeholder="Example: 111 E Foster Ave, Wood Dale, IL 60191"
->
+
+            <label for="eventAddress">
+                Address
+            </label>
+
+            <input
+                type="text"
+                id="eventAddress"
+                placeholder="Example: 111 E Foster Ave, Wood Dale, IL 60191"
+            >
+
 
             <label for="eventStatus">
                 Status
@@ -367,6 +469,11 @@
 
 </div>
 
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
