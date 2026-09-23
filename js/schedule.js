@@ -238,3 +238,301 @@ function escapeHTML(value) {
 
 
 loadSchedule();
+/* =========================================
+   MONTHLY CALENDAR
+========================================= */
+
+let calendarDate = new Date();
+
+let calendarEvents = [];
+
+
+/* Load calendar events */
+
+async function loadCalendarEvents() {
+
+    const { data, error } = await sb
+        .from("events")
+        .select("*")
+        .order("event_date", {
+            ascending: true
+        });
+
+
+    if (error) {
+
+        console.error(
+            "Calendar error:",
+            error
+        );
+
+        return;
+
+    }
+
+
+    calendarEvents = data || [];
+
+    renderCalendar();
+
+}
+
+
+
+/* Render calendar */
+
+function renderCalendar() {
+
+    const calendarDays =
+        document.getElementById(
+            "calendarDays"
+        );
+
+    const calendarMonth =
+        document.getElementById(
+            "calendarMonth"
+        );
+
+
+    if (!calendarDays) {
+        return;
+    }
+
+
+    calendarDays.innerHTML = "";
+
+
+    const year =
+        calendarDate.getFullYear();
+
+    const month =
+        calendarDate.getMonth();
+
+
+    /* Month heading */
+
+    calendarMonth.textContent =
+        calendarDate.toLocaleDateString(
+            "en-US",
+            {
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    /* First day */
+
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
+
+    /* Number of days */
+
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
+    /* Empty cells */
+
+    for (
+        let i = 0;
+        i < firstDay;
+        i++
+    ) {
+
+        const empty =
+            document.createElement("div");
+
+        empty.className =
+            "calendar-day empty";
+
+        calendarDays.appendChild(
+            empty
+        );
+
+    }
+
+
+    /* Actual days */
+
+    for (
+        let day = 1;
+        day <= daysInMonth;
+        day++
+    ) {
+
+        const cell =
+            document.createElement("div");
+
+        cell.className =
+            "calendar-day";
+
+
+        const dayNumber =
+            document.createElement("div");
+
+        dayNumber.className =
+            "calendar-day-number";
+
+        dayNumber.textContent =
+            day;
+
+
+        cell.appendChild(
+            dayNumber
+        );
+
+
+        /* Check for today */
+
+        const today =
+            new Date();
+
+
+        if (
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+        ) {
+
+            cell.classList.add(
+                "today"
+            );
+
+        }
+
+
+        /* Create YYYY-MM-DD */
+
+        const monthNumber =
+            String(
+                month + 1
+            ).padStart(
+                2,
+                "0"
+            );
+
+        const dayNumberString =
+            String(day).padStart(
+                2,
+                "0"
+            );
+
+
+        const dateString =
+            `${year}-${monthNumber}-${dayNumberString}`;
+
+
+        /* Find events */
+
+        const eventsForDay =
+            calendarEvents.filter(
+                event =>
+                    event.event_date ===
+                    dateString
+            );
+
+
+        /* Add events */
+
+        eventsForDay.forEach(
+            event => {
+
+                const eventElement =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                eventElement.className =
+                    "calendar-event";
+
+
+                if (
+                    event.status ===
+                    "Canceled"
+                ) {
+
+                    eventElement
+                        .classList
+                        .add(
+                            "canceled"
+                        );
+
+                }
+
+
+                eventElement.textContent =
+                    `${formatTime(
+                        event.start_time
+                    )} ${event.title}`;
+
+
+                cell.appendChild(
+                    eventElement
+                );
+
+            }
+        );
+
+
+        calendarDays.appendChild(
+            cell
+        );
+
+    }
+
+}
+
+
+
+/* Previous month */
+
+document
+    .getElementById("previousMonth")
+    ?.addEventListener(
+        "click",
+        function() {
+
+            calendarDate.setMonth(
+                calendarDate.getMonth() - 1
+            );
+
+            renderCalendar();
+
+        }
+    );
+
+
+
+/* Next month */
+
+document
+    .getElementById("nextMonth")
+    ?.addEventListener(
+        "click",
+        function() {
+
+            calendarDate.setMonth(
+                calendarDate.getMonth() + 1
+            );
+
+            renderCalendar();
+
+        }
+    );
+
+
+
+/* Start calendar */
+
+loadCalendarEvents();
