@@ -2,14 +2,16 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>SHOGVB | Schedule</title>
 
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -27,25 +29,17 @@
         </button>
 
         <nav class="navigation" id="navigation">
-
             <a href="index.html">Home</a>
 
             <a href="schedule.html" class="active">
                 Schedule
             </a>
 
-            <a href="photos.html">
-                Photos
-            </a>
+            <a href="photos.html">Photos</a>
 
-            <a href="shop.html">
-                Shop
-            </a>
+            <a href="shop.html">Shop</a>
 
-            <a href="contact.html">
-                Contact Us
-            </a>
-
+            <a href="contact.html">Contact Us</a>
         </nav>
 
     </div>
@@ -59,10 +53,10 @@
 
         <div class="container">
 
-            <h1>Schedule</h1>
+            <h1>Open Gym Schedule</h1>
 
             <p>
-                Check out our upcoming events and activities.
+                Upcoming St. Hubert's Open Gym Volleyball sessions.
             </p>
 
         </div>
@@ -74,114 +68,11 @@
 
         <div class="container">
 
-            <div class="schedule-list">
+            <div id="schedule">
 
-                <!-- EVENT -->
-
-                <div class="event-card">
-
-                    <div class="event-date">
-
-                        <span class="month">
-                            SEP
-                        </span>
-
-                        <span class="day">
-                            5
-                        </span>
-
-                    </div>
-
-                    <div class="event-info">
-
-                        <h2>
-                            Advanced Open Gym
-                        </h2>
-
-                        <p>
-                            Saturday, September 5, 2026
-                        </p>
-
-                        <p>
-                            Location: Wood Dale Park District
-                            111 Foster Ave, Wood Dale
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EVENT -->
-
-                <div class="event-card">
-
-                    <div class="event-date">
-
-                        <span class="month">
-                            SEP
-                        </span>
-
-                        <span class="day">
-                            12
-                        </span>
-
-                    </div>
-
-                    <div class="event-info">
-
-                        <h2>
-                            Skills & Scrimmages
-                        </h2>
-
-                        <p>
-                            Saturday, September 12, 2026
-                        </p>
-
-                        <p>
-                            Location: Wood Dale Park District
-                            111 Foster Ave, Wood Dale
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EVENT -->
-
-                <div class="event-card">
-
-                    <div class="event-date">
-
-                        <span class="month">
-                            SEP
-                        </span>
-
-                        <span class="day">
-                            26
-                        </span>
-
-                    </div>
-
-                    <div class="event-info">
-
-                        <h2>
-                            Advanced Open Gym
-                        </h2>
-
-                        <p>
-                            Saturday, September 26, 2026
-                        </p>
-
-                        <p>
-                            Location: Wood Dale Park District
-                            111 Foster Ave, Wood Dale
-                        </p>
-
-                    </div>
-
-                </div>
+                <p>
+                    Loading upcoming open gyms...
+                </p>
 
             </div>
 
@@ -205,7 +96,13 @@
 </footer>
 
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+<script src="js/schedule.js"></script>
 <script src="js/script.js"></script>
 
 </body>
+
 </html>
