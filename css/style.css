@@ -1,565 +1,462 @@
-/* ========================================= 
+/* =========================================
+   SHOGVB - MAIN STYLESHEET
+   St. Hubert's Open Gym Volleyball
+========================================= */
+
+
+/* =========================================
    THEME VARIABLES
 ========================================= */
+
 :root {
-  --bg-off-white: #fffdf6;  /* Main page background */
-  --bg-card: #ffffff;      /* Clean white for content boxes/cards */
-  --brand-charcoal: #1a1a1a;/* Main dark color (headers, footers, dark text) */
-  --brand-yellow: #ffd204;  /* Accent color (buttons, active states, borders) */
-  --text-dark: #1a1a1a;     /* Body text */
-  --text-muted: #666666;    /* Secondary text */
+    --bg-off-white: #fffdf6;
+    --bg-card: #ffffff;
+
+    --brand-charcoal: #1a1a1a;
+    --brand-yellow: #ffd204;
+
+    --text-dark: #1a1a1a;
+    --text-muted: #666666;
 }
 
-/* ========================================= GENERAL ========================================= */
+
+/* =========================================
+   GENERAL
+========================================= */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-  background: var(--bg-off-white);
-  color: var(--text-dark);
+    font-family: Arial, Helvetica, sans-serif;
+
+    line-height: 1.6;
+
+    background: var(--bg-off-white);
+
+    color: var(--text-dark);
 }
 
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
 }
 
-/* ========================================= HEADER ========================================= */
+
+/* =========================================
+   HEADER
+========================================= */
+
 .site-header {
-  background: var(--brand-charcoal);
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background: var(--brand-charcoal);
+
+    color: white;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
 }
 
 .nav-container {
-  min-height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    min-height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
 }
 
-/* ========================================= LOGO ========================================= */
+
+/* =========================================
+   LOGO
+========================================= */
+
 .logo {
-  color: white;
-  text-decoration: none;
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  
-  /* Adds a smooth flex layout to ensure the image centers nicely in the header */
-  display: flex;
-  align-items: center; 
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 1.8rem;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    display: flex;
+
+    align-items: center;
 }
 
-/* Add this new block directly below the .logo code */
 .logo img {
-  height: 30px;      /* Controls how tall your logo is in the navigation bar */
-  width: auto;       /* Maintains your logo's original shape aspect ratio */
-  display: block;    /* Removes unexpected whitespace under the image */
+    height: 30px;
+
+    width: auto;
+
+    display: block;
 }
 
 
-/* ========================================= NAVIGATION ========================================= */
+/* =========================================
+   NAVIGATION
+========================================= */
+
 .navigation {
-  display: flex;
-  gap: 30px;
+    display: flex;
+
+    gap: 30px;
 }
 
 .navigation a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 0;
-  transition: 0.3s;
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    padding: 10px 0;
+
+    transition: 0.3s;
 }
 
 .navigation a:hover {
-  color: var(--brand-yellow);
+    color: var(--brand-yellow);
 }
 
 .navigation a.active {
-  border-bottom: 3px solid var(--brand-yellow);
+    border-bottom: 3px solid var(--brand-yellow);
 }
 
-/* ========================================= MOBILE MENU BUTTON ========================================= */
+
+/* =========================================
+   MOBILE MENU BUTTON
+========================================= */
+
 .menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
-/* ========================================= HERO ========================================= */
-.hero {
-  min-height: 650px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0.55)
-  ), url("../images/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-
-.hero-content {
-  max-width: 750px;
-  padding: 30px;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-/* ========================================= BUTTONS ========================================= */
-.button {
-  display: inline-block;
-  background: var(--brand-yellow);
-  color: var(--brand-charcoal);
-  border: 2px solid var(--brand-yellow);
-  padding: 12px 24px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.button:hover {
-  background: var(--brand-charcoal);
-  color: white;
-  border-color: var(--brand-charcoal);
-}
-
-.button-outline {
-  background: transparent;
-  border-color: white;
-  color: white;
-  margin-left: 10px;
-}
-
-.button-outline:hover {
-  background: white;
-  color: var(--brand-charcoal);
-}
-
-/* ========================================= FEATURES ========================================= */
-.features {
-  padding: 70px 0;
-}
-
-.features h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.2rem;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-}
-
-.feature-card {
-  background: var(--bg-card);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.feature-card h3 {
-  margin-bottom: 15px;
-}
-
-.feature-card p {
-  margin-bottom: 20px;
-  color: var(--text-muted);
-}
-
-.feature-card a {
-  color: var(--brand-charcoal);
-  font-weight: bold;
-  text-decoration: none;
-  border-bottom: 2px solid var(--brand-yellow);
-}
-
-/* ========================================= PAGE HEADER ========================================= */
-.page-header {
-  background: var(--brand-charcoal);
-  color: white;
-  padding: 70px 0;
-  text-align: center;
-  border-bottom: 4px solid var(--brand-yellow);
-}
-
-.page-header h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-/* ========================================= CONTENT ========================================= */
-.content-section {
-  padding: 70px 0;
-}
-
-/* ========================================= SCHEDULE ========================================= */
-.schedule-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.event-card {
-  background: var(--bg-card);
-  display: flex;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.event-date {
-  min-width: 100px;
-  text-align: center;
-  margin-right: 25px;
-  border-right: 2px solid var(--brand-yellow);
-  padding-right: 25px;
-}
-
-.event-date .month {
-  display: block;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: var(--brand-charcoal);
-}
-
-.event-date .day {
-  display: block;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--brand-charcoal);
-}
-
-.event-info h2 {
-  margin-bottom: 10px;
-}
-
-/* ========================================= PHOTOS ========================================= */
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.photo-card {
-  overflow: hidden;
-  border-radius: 8px;
-  background: var(--bg-card);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.photo-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  display: block;
-  transition: 0.3s;
-}
-
-.photo-card:hover img {
-  transform: scale(1.05);
-}
-
-/* ========================================= SHOP ========================================= */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.product-card {
-  background: var(--bg-card);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.product-image-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.product-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  display: block;
-  transition: opacity 0.3s ease, filter 0.3s ease;
-}
-
-.product-card.sold-out .product-image-container img {
-  opacity: 0.4;
-  filter: grayscale(100%);
-}
-
-.sold-out-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.sold-out-overlay span {
-  background-color: var(--brand-charcoal);
-  color: var(--brand-yellow);
-  font-weight: bold;
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-  padding: 6px 0;
-  width: 150%;
-  text-align: center;
-  transform: rotate(-25deg);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  text-transform: uppercase;
-  border-top: 1px solid var(--brand-yellow);
-  border-bottom: 1px solid var(--brand-yellow);
-}
-
-.old-price {
-  text-decoration: line-through;
-  color: var(--text-muted);
-  font-weight: normal;
-  margin-right: 8px;
-}
-
-.button.disabled-btn {
-  background-color: #dddddd;
-  color: #888888;
-  border-color: #dddddd;
-  cursor: not-allowed;
-}
-
-.button.disabled-btn:hover {
-  background-color: #dddddd;
-  color: #888888;
-  border-color: #dddddd;
-}
-
-.product-info {
-  padding: 25px;
-}
-
-.product-info h2 {
-  margin-bottom: 10px;
-}
-
-.product-info p {
-  margin-bottom: 15px;
-  color: var(--text-muted);
-}
-
-.product-info strong {
-  display: block;
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-}
-
-/* ========================================= CONTACT ========================================= */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-}
-
-.contact-info {
-  background: var(--bg-card);
-  padding: 35px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.contact-info h2 {
-  margin-bottom: 20px;
-}
-
-.contact-info p {
-  margin-bottom: 20px;
-  color: var(--text-muted);
-}
-
-.contact-form {
-  background: var(--bg-card);
-  padding: 35px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.contact-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.contact-form input, 
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-.contact-form input:focus, 
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--brand-yellow);
-}
-
-.contact-form textarea {
-  resize: vertical;
-}
-
-/* ========================================= FOOTER ========================================= */
-.site-footer {
-  background: var(--brand-charcoal);
-  color: white;
-  text-align: center;
-  padding: 30px 0;
-  margin-top: 30px;
-  border-top: 3px solid var(--brand-yellow);
-}
-
-/* ========================================= MOBILE RESPONSIVE DESIGN ========================================= */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-  
-  .navigation {
     display: none;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: var(--brand-charcoal);
-    flex-direction: column;
-    gap: 0;
-    padding: 10px 0;
-  }
-  
-  .navigation.show {
-    display: flex;
-  }
-  
-  .navigation a {
-    padding: 15px 5%;
-    border-bottom: 1px solid #333;
-  }
-  
-  .navigation a:hover {
-    color: var(--brand-yellow);
-  }
-  
-  .navigation a.active {
-    border-bottom: 1px solid #333;
-    color: var(--brand-yellow);
-  }
-  
-  .hero {
-    min-height: 450px;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .feature-grid, 
-  .photo-grid, 
-  .product-grid, 
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .event-card {
-    flex-direction: column;
-  }
-  
-  .event-date {
-    min-width: 180px;
+
+    background: none;
+
+    border: none;
+
+    color: white;
+
+    font-size: 1.8rem;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 650px;
 
     display: flex;
-    flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
-    margin-right: 45px;
-    padding-right: 45px;
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("../images/hero.jpg");
 
-    border-right: 3px solid #f4cf28;
+    background-size: cover;
+
+    background-position: center;
+
+    color: white;
+}
+
+.hero-content {
+    max-width: 750px;
+
+    padding: 30px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.button {
+    display: inline-block;
+
+    background: var(--brand-yellow);
+
+    color: var(--brand-charcoal);
+
+    border: 2px solid var(--brand-yellow);
+
+    padding: 12px 24px;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: var(--brand-charcoal);
+
+    color: white;
+
+    border-color: var(--brand-charcoal);
+}
+
+.button-outline {
+    background: transparent;
+
+    border-color: white;
+
+    color: white;
+
+    margin-left: 10px;
+}
+
+.button-outline:hover {
+    background: white;
+
+    color: var(--brand-charcoal);
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features {
+    padding: 70px 0;
+}
+
+.features h2 {
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    font-size: 2.2rem;
+}
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.feature-card {
+    background: var(--bg-card);
+
+    padding: 30px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.05);
+}
+
+.feature-card h3 {
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    margin-bottom: 20px;
+
+    color: var(--text-muted);
+}
+
+.feature-card a {
+    color: var(--brand-charcoal);
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    border-bottom: 2px solid var(--brand-yellow);
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+    background: var(--brand-charcoal);
+
+    color: white;
+
+    padding: 70px 0;
+
+    text-align: center;
+
+    border-bottom: 4px solid var(--brand-yellow);
+}
+
+.page-header h1 {
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content-section {
+    padding: 70px 0;
+}
+
+
+/* =========================================
+   SCHEDULE
+========================================= */
+
+.schedule-list,
+#schedule {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/* EVENT CARD */
+
+.event-card {
+    background: var(--bg-card);
+
+    display: flex;
+
+    align-items: stretch;
+
+    padding: 25px;
+
+    min-height: 220px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.05);
+}
+
+
+/* DATE SECTION */
+
+.event-date {
+    min-width: 160px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    margin-right: 35px;
+
+    padding-right: 35px;
+
+    border-right: 3px solid var(--brand-yellow);
 }
 
 .event-date .month {
     display: block;
+
     font-weight: bold;
+
     font-size: 1.3rem;
+
     letter-spacing: 2px;
+
+    color: var(--brand-charcoal);
 }
 
 .event-date .day {
     display: block;
-    font-size: 3.5rem;
-    font-weight: bold;
-    line-height: 1.1;
-    margin-top: 10px;
-}
-  
-/* =========================================
-   SHOGVB SCHEDULE
-========================================= */
 
-#schedule {
+    font-size: 3.5rem;
+
+    font-weight: bold;
+
+    line-height: 1;
+
+    margin-top: 10px;
+
+    color: var(--brand-charcoal);
+}
+
+
+/* EVENT INFORMATION */
+
+.event-info {
     display: flex;
+
     flex-direction: column;
-    gap: 20px;
+
+    justify-content: center;
+
+    flex: 1;
+}
+
+.event-info h2 {
+    margin-bottom: 10px;
 }
 
 .event-title-row {
     display: flex;
+
     align-items: center;
+
     gap: 15px;
+
     flex-wrap: wrap;
+
+    margin-bottom: 5px;
 }
 
 .event-title-row h2 {
@@ -568,35 +465,58 @@ body {
 
 .event-weekday {
     font-size: 1.1rem;
+
     font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+.event-info p {
+    margin: 2px 0;
 }
 
 .event-notes {
     margin-top: 12px !important;
+
     font-style: italic;
+
+    color: var(--text-muted);
 }
+
+
+/* =========================================
+   SCHEDULE STATUS
+========================================= */
 
 .status-badge {
     display: inline-block;
+
     padding: 5px 12px;
+
     border-radius: 20px;
+
     font-size: 0.8rem;
+
     font-weight: bold;
+
     text-transform: uppercase;
 }
 
 .status-open {
     background: #dcfce7;
+
     color: #166534;
 }
 
 .status-full {
     background: #fef3c7;
+
     color: #92400e;
 }
 
 .status-canceled {
     background: #fee2e2;
+
     color: #991b1b;
 }
 
@@ -608,60 +528,104 @@ body {
     text-decoration: line-through;
 }
 
+
+/* =========================================
+   SCHEDULE MESSAGE
+========================================= */
+
 .schedule-message {
     background: white;
+
     padding: 40px;
+
     border-radius: 8px;
+
     text-align: center;
 
     box-shadow:
         0 4px 15px
         rgba(0, 0, 0, 0.08);
 }
+
+
 /* =========================================
-   SHOGVB CALENDAR
+   CALENDAR SECTION
 ========================================= */
 
 .calendar-section {
     padding: 20px 0 80px;
 }
 
+
+/* CALENDAR HEADER */
+
 .calendar-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+
+    grid-template-columns: 50px 1fr 50px;
+
     align-items: center;
+
+    gap: 20px;
 
     margin-bottom: 25px;
 }
 
 .calendar-header h2 {
-    font-size: 2rem;
     margin: 0;
+
+    text-align: center;
+
+    font-size: 2rem;
+
+    color: var(--brand-charcoal);
 }
 
+
+/* PREVIOUS / NEXT BUTTONS */
+
 .calendar-button {
-    background: #111;
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--brand-charcoal);
+
     color: white;
 
     border: none;
-    border-radius: 6px;
 
-    width: 45px;
-    height: 45px;
+    border-radius: 6px;
 
     font-size: 1.3rem;
 
+    font-weight: bold;
+
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .calendar-button:hover {
-    opacity: 0.8;
+    background: var(--brand-yellow);
+
+    color: var(--brand-charcoal);
 }
 
 
-/* Calendar */
+/* =========================================
+   CALENDAR
+========================================= */
 
 .calendar {
+    width: 100%;
+
     background: white;
 
     border-radius: 10px;
@@ -674,15 +638,20 @@ body {
 }
 
 
-/* Days of week */
+/* =========================================
+   CALENDAR WEEKDAYS
+========================================= */
 
 .calendar-weekdays {
+    width: 100%;
+
     display: grid;
 
     grid-template-columns:
-        repeat(7, 1fr);
+        repeat(7, minmax(0, 1fr));
 
-    background: #111;
+    background: var(--brand-charcoal);
+
     color: white;
 
     text-align: center;
@@ -692,78 +661,117 @@ body {
 
 .calendar-weekdays div {
     padding: 15px 5px;
+
+    border-right:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+}
+
+.calendar-weekdays div:last-child {
+    border-right: none;
 }
 
 
-/* Calendar grid */
+/* =========================================
+   CALENDAR DAYS
+========================================= */
 
 .calendar-days {
+    width: 100%;
+
     display: grid;
 
     grid-template-columns:
-        repeat(7, 1fr);
+        repeat(7, minmax(0, 1fr));
 }
 
 
-/* Individual day */
+/* INDIVIDUAL DAY */
 
 .calendar-day {
+    min-width: 0;
+
     min-height: 130px;
 
     padding: 10px;
 
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-
     position: relative;
+
+    background: white;
+
+    border-right: 1px solid #ddd;
+
+    border-bottom: 1px solid #ddd;
 }
+
+.calendar-day:nth-child(7n) {
+    border-right: none;
+}
+
+
+/* DAY NUMBER */
 
 .calendar-day-number {
     font-weight: bold;
+
     font-size: 1rem;
+
+    color: var(--brand-charcoal);
 }
 
 
-/* Empty calendar cells */
+/* =========================================
+   EMPTY CALENDAR DAYS
+========================================= */
 
 .calendar-day.empty {
-    background: #f7f7f7;
+    background: #f5f5f5;
 }
 
 
-/* Today */
+/* =========================================
+   TODAY
+========================================= */
 
 .calendar-day.today {
     background: #fffbea;
 }
 
-.calendar-day.today
-.calendar-day-number {
-    background: #111;
-    color: white;
+.calendar-day.today .calendar-day-number {
+    width: 30px;
+
+    height: 30px;
 
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    width: 30px;
-    height: 30px;
+    background: var(--brand-charcoal);
+
+    color: white;
 
     border-radius: 50%;
 }
 
 
-/* Event */
+/* =========================================
+   CALENDAR EVENTS
+========================================= */
 
 .calendar-event {
     display: block;
+
+    width: 100%;
 
     margin-top: 8px;
 
     padding: 6px 8px;
 
-    background: #f4cf28;
+    background: var(--brand-yellow);
+
+    color: var(--brand-charcoal);
 
     border-radius: 4px;
 
@@ -771,40 +779,605 @@ body {
 
     font-weight: bold;
 
+    line-height: 1.3;
+
+    overflow-wrap: break-word;
+
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .calendar-event:hover {
-    opacity: 0.8;
+    opacity: 0.75;
 }
 
 
-/* Canceled event */
+/* CANCELED EVENT */
 
 .calendar-event.canceled {
     background: #fee2e2;
+
     color: #991b1b;
 
     text-decoration: line-through;
 }
 
 
-/* Mobile */
+/* =========================================
+   PHOTOS
+========================================= */
+
+.photo-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.photo-card {
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background: var(--bg-card);
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.05);
+}
+
+.photo-card img {
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.3s;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   SHOP
+========================================= */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.product-card {
+    background: var(--bg-card);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.05);
+}
+
+.product-image-container {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+}
+
+.product-card img {
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        opacity 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+/* SOLD OUT */
+
+.product-card.sold-out
+.product-image-container img {
+    opacity: 0.4;
+
+    filter: grayscale(100%);
+}
+
+.sold-out-overlay {
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    pointer-events: none;
+}
+
+.sold-out-overlay span {
+    background-color: var(--brand-charcoal);
+
+    color: var(--brand-yellow);
+
+    font-weight: bold;
+
+    font-size: 1.1rem;
+
+    letter-spacing: 2px;
+
+    padding: 6px 0;
+
+    width: 150%;
+
+    text-align: center;
+
+    transform: rotate(-25deg);
+
+    box-shadow:
+        0 4px 10px
+        rgba(0, 0, 0, 0.3);
+
+    text-transform: uppercase;
+
+    border-top:
+        1px solid
+        var(--brand-yellow);
+
+    border-bottom:
+        1px solid
+        var(--brand-yellow);
+}
+
+.old-price {
+    text-decoration: line-through;
+
+    color: var(--text-muted);
+
+    font-weight: normal;
+
+    margin-right: 8px;
+}
+
+
+/* DISABLED BUTTON */
+
+.button.disabled-btn {
+    background-color: #dddddd;
+
+    color: #888888;
+
+    border-color: #dddddd;
+
+    cursor: not-allowed;
+}
+
+.button.disabled-btn:hover {
+    background-color: #dddddd;
+
+    color: #888888;
+
+    border-color: #dddddd;
+}
+
+
+/* PRODUCT INFO */
+
+.product-info {
+    padding: 25px;
+}
+
+.product-info h2 {
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    margin-bottom: 15px;
+
+    color: var(--text-muted);
+}
+
+.product-info strong {
+    display: block;
+
+    font-size: 1.3rem;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 50px;
+}
+
+.contact-info {
+    background: var(--bg-card);
+
+    padding: 35px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.05);
+}
+
+.contact-info h2 {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+
+    color: var(--text-muted);
+}
+
+
+/* CONTACT FORM */
+
+.contact-form {
+    background: var(--bg-card);
+
+    padding: 35px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.05);
+}
+
+.contact-form label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+
+    border-color: var(--brand-yellow);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.site-footer {
+    background: var(--brand-charcoal);
+
+    color: white;
+
+    text-align: center;
+
+    padding: 30px 0;
+
+    margin-top: 30px;
+
+    border-top:
+        3px solid
+        var(--brand-yellow);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .feature-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .photo-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE DESIGN
+========================================= */
 
 @media (max-width: 768px) {
 
-    .calendar-day {
-        min-height: 85px;
-        padding: 5px;
+    /* NAVIGATION */
+
+    .menu-toggle {
+        display: block;
     }
 
-    .calendar-event {
-        font-size: 0.65rem;
-        padding: 4px;
+    .navigation {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+
+        width: 100%;
+
+        background:
+            var(--brand-charcoal);
+
+        flex-direction: column;
+
+        gap: 0;
+
+        padding: 10px 0;
+    }
+
+    .navigation.show {
+        display: flex;
+    }
+
+    .navigation a {
+        padding: 15px 5%;
+
+        border-bottom:
+            1px solid #333;
+    }
+
+    .navigation a:hover {
+        color:
+            var(--brand-yellow);
+    }
+
+    .navigation a.active {
+        border-bottom:
+            1px solid #333;
+
+        color:
+            var(--brand-yellow);
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 450px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+
+    /* PAGE HEADER */
+
+    .page-header {
+        padding: 50px 0;
+    }
+
+    .page-header h1 {
+        font-size: 2.3rem;
+    }
+
+
+    /* GRID LAYOUTS */
+
+    .feature-grid,
+    .photo-grid,
+    .product-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* BUTTON */
+
+    .button-outline {
+        margin-left: 0;
+
+        margin-top: 10px;
+    }
+
+
+    /* =====================================
+       MOBILE SCHEDULE
+    ===================================== */
+
+    .event-card {
+        flex-direction: column;
+
+        min-height: 0;
+
+        padding: 20px;
+    }
+
+    .event-date {
+        min-width: 0;
+
+        width: 100%;
+
+        margin-right: 0;
+
+        margin-bottom: 20px;
+
+        padding-right: 0;
+
+        padding-bottom: 15px;
+
+        border-right: none;
+
+        border-bottom:
+            3px solid
+            var(--brand-yellow);
+    }
+
+    .event-date .month {
+        font-size: 1.1rem;
+    }
+
+    .event-date .day {
+        font-size: 3rem;
+    }
+
+
+    /* =====================================
+       MOBILE CALENDAR
+    ===================================== */
+
+    .calendar-section {
+        padding:
+            20px 0 50px;
+    }
+
+    .calendar-header {
+        grid-template-columns:
+            40px 1fr 40px;
+
+        gap: 10px;
+    }
+
+    .calendar-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .calendar-button {
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 1rem;
     }
 
     .calendar-weekdays div {
+        padding:
+            10px 2px;
+
+        font-size: 0.7rem;
+    }
+
+    .calendar-day {
+        min-height: 85px;
+
+        padding: 5px;
+    }
+
+    .calendar-day-number {
+        font-size: 0.8rem;
+    }
+
+    .calendar-event {
+        margin-top: 5px;
+
+        padding: 4px;
+
+        font-size: 0.6rem;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 500px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .calendar-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .calendar-weekdays div {
+        font-size: 0.6rem;
+    }
+
+    .calendar-day {
+        min-height: 70px;
+
+        padding: 4px;
+    }
+
+    .calendar-day-number {
         font-size: 0.75rem;
+    }
+
+    .calendar-event {
+        font-size: 0.55rem;
+
+        padding: 3px;
+
+        overflow: hidden;
     }
 
 }
